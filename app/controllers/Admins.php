@@ -18,4 +18,14 @@ class Admins extends Controller
 
         $this->view('Admin/index', $data);
     }
+
+    public function new()
+    {
+
+        $data = [
+            'title' => 'Add products'
+        ];
+
+        $this->view("Admin/add_products", $data);
+    }
 }
