@@ -9,12 +9,13 @@
 body {
   background: #222736;
   position: relative;
-  min-height: 150vh;
+  min-height: 100vh;
 
   .aside {
     display: block;
     width: 250px;
     position: fixed;
+    top: 0;
     left: 0;
     height: 100vh;
     background: #2e3342;
@@ -164,6 +165,98 @@ body {
       top: 0;
       z-index: 3;
       transition: 0s ease-in-out;
+    }
+
+    .form-container {
+      padding: 3px;
+      width: 100%;
+      display: block;
+
+      form {
+        max-width: 500px;
+        border-radius: 5px;
+        margin: 30px auto;
+        padding: 1rem;
+        display: block;
+        // box-shadow: 1px 3px 6px #33394f;
+
+        h3 {
+          text-align: center;
+          color: #184c6c;
+          margin-bottom: 10px;
+          font-size: 2rem;
+        }
+
+        > div {
+          display: block;
+          margin: 15px 0px;
+
+          label {
+            color: #aaa;
+          }
+
+          figure {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            img {
+              max-width: 300px;
+              height: 250px;
+              margin: 18px 0px;
+            }
+          }
+
+          input {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 10px;
+            outline: none;
+            background: #1f2230;
+            border: none;
+            color: #ccc;
+          }
+
+          #image-name {
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+
+          label[for="product_img"] {
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #eee;
+            cursor: pointer;
+          }
+          input[type="file"] {
+            display: none;
+          }
+
+          select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background: #1f2230;
+            color: #fff;
+            outline: none;
+            border: none;
+            margin-top: 10px;
+
+            option {
+              padding: 0.4rem !important;
+            }
+          }
+        }
+
+        button {
+          margin-top: 10px;
+          padding: 12px 14px;
+          color: #fff;
+          background: #024c69;
+          border: 2px solid #024c69;
+          cursor: pointer;
+        }
+      }
     }
   }
 

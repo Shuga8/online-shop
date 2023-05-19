@@ -12,7 +12,21 @@ include_once APPROOT . "/views/includes/admin-header.php";
 
 
     <div class="form-container">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo SITE_URL; ?>/Admins/store" method="POST" enctype="multipart/form-data">
+            <h3>
+                <caption><i class="fa-solid fa-square-plus"></i></caption>
+            </h3>
+
+            <p style="text-align: center;">
+                <?php
+
+                if (isset($_SESSION['error'])) {
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                }
+
+                ?>
+            </p>
             <div class="input-field">
                 <label for="product_name">Product name</label>
                 <input type="text" name="product_name" id="product_name">
@@ -23,13 +37,19 @@ include_once APPROOT . "/views/includes/admin-header.php";
                 <input type="text" name="product_cap" id="product_cap">
             </div>
 
+            <br>
+
             <div class="input-field">
 
-                <label for="product_img">Product Image</label>
+                <label for="product_img">Choose Image</label>
 
                 <div class="image-preview">
 
-                    <img src="<?php echo SITE_URL; ?>/public/images/Noun_Project_cloud_upload_icon_411593_cc.png" style="max-width: 300px;height: 250px;" alt="Product Image /" id="selected-image">
+                    <figure>
+
+                        <img src="<?php echo SITE_URL; ?>/public/images/Noun_Project_cloud_upload_icon_411593_cc.png" style="" alt="Product Image /" id="selected-image">
+
+                    </figure>
 
                 </div>
 
@@ -40,7 +60,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
 
             <div class="input-field">
                 <label for="product_price">Product price</label>
-                <input type="number" name="product_price" id="product_price">
+                <input type="text" name="product_price" id="product_price">
             </div>
 
             <div class="input-field">
@@ -63,6 +83,12 @@ include_once APPROOT . "/views/includes/admin-header.php";
                 </select>
             </div>
 
+            <div class="input-field">
+                <label for="product_quantity">Quantity Available</label>
+                <input type="number" name="product_quantity" id="product_quantity">
+            </div>
+
+            <button type="submit" id="submit" name="submit">Add <i class="fas fa-plus-square"></i></button>
 
         </form>
     </div>

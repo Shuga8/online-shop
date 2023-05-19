@@ -8,11 +8,12 @@
 body {
   background: #222736;
   position: relative;
-  min-height: 150vh; }
+  min-height: 100vh; }
   body .aside {
     display: block;
     width: 250px;
     position: fixed;
+    top: 0;
     left: 0;
     height: 100vh;
     background: #2e3342;
@@ -113,6 +114,71 @@ body {
       top: 0;
       z-index: 3;
       transition: 0s ease-in-out; }
+    body main .form-container {
+      padding: 3px;
+      width: 100%;
+      display: block; }
+      body main .form-container form {
+        max-width: 500px;
+        border-radius: 5px;
+        margin: 30px auto;
+        padding: 1rem;
+        display: block; }
+        body main .form-container form h3 {
+          text-align: center;
+          color: #184c6c;
+          margin-bottom: 10px;
+          font-size: 2rem; }
+        body main .form-container form > div {
+          display: block;
+          margin: 15px 0px; }
+          body main .form-container form > div label {
+            color: #aaa; }
+          body main .form-container form > div figure {
+            width: 100%;
+            display: flex;
+            justify-content: center; }
+            body main .form-container form > div figure img {
+              max-width: 300px;
+              height: 250px;
+              margin: 18px 0px; }
+          body main .form-container form > div input {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 10px;
+            outline: none;
+            background: #1f2230;
+            border: none;
+            color: #ccc; }
+          body main .form-container form > div #image-name {
+            word-wrap: break-word;
+            word-break: break-all; }
+          body main .form-container form > div label[for="product_img"] {
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #eee;
+            cursor: pointer; }
+          body main .form-container form > div input[type="file"] {
+            display: none; }
+          body main .form-container form > div select {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background: #1f2230;
+            color: #fff;
+            outline: none;
+            border: none;
+            margin-top: 10px; }
+            body main .form-container form > div select option {
+              padding: 0.4rem !important; }
+        body main .form-container form button {
+          margin-top: 10px;
+          padding: 12px 14px;
+          color: #fff;
+          background: #024c69;
+          border: 2px solid #024c69;
+          cursor: pointer; }
   body main.aside-active {
     margin-left: 75px;
     width: calc(100% - 75px); }
