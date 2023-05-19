@@ -61,18 +61,21 @@ class Admins extends Controller
             //Validate Floats and Integers
 
             if (!preg_match("/^[0-9\.]{1,}$/", $data['p_price'])) {
-                $_SESSION['error'] = "<span style='color: red;'>Error: Price can only be numbers and decimal</span>";
+                $_SESSION['error'] = "<span style='color: red;'>Error: Price can only be numbers or decimal</span>";
                 header("Location: " . SITE_URL . "/Admins/new");
                 exit(0);
             }
 
-            settype($data['p_price'], "float");
+            if (!preg_match("/^[0-9]{1,}$/", $data['p_quantity'])) {
+                $_SESSION['error'] = "<span style='color: red;'>Error: Quantity can only be numbers!</span>";
+                header("Location: " . SITE_URL . "/Admins/new");
+                exit(0);
+            }
 
-            echo $data['p_price'] . " " . is_float($data['p_price']);
+            //Image validation
 
-            echo "<br>";
-
-            echo $data['p_price'];
+            if (isset($_FILE['product_img'])) {
+            }
         }
     }
 }
