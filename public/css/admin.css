@@ -96,7 +96,9 @@ body {
         body main #header .other-nav .user-icon {
           width: 35px;
           height: 35px;
-          margin: 10px; }
+          margin: 10px;
+          border: 3px solid #1d2230;
+          border-radius: 50px; }
           body main #header .other-nav .user-icon img {
             width: 100%;
             height: 100%;
