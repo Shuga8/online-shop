@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background: #222736; }
+
+aside {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  background: #2e3342; }
