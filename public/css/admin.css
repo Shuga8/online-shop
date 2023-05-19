@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: 0.3s ease-in-out; }
+  transition: 0.3s ease-in-out;
+  font-family: Arial; }
 
 body {
   background: #222736;
@@ -16,19 +17,60 @@ body {
     height: 100vh;
     background: #2e3342;
     z-index: 7; }
+    body .aside .logo {
+      width: 100%;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      body .aside .logo i {
+        color: #aaa;
+        font-size: 30px; }
+    body .aside .links {
+      width: 100%;
+      height: calc(100% - 10vh);
+      padding-top: 30px; }
+      body .aside .links a {
+        text-decoration: none;
+        display: block;
+        color: #aaa;
+        padding: 14px 12px;
+        word-break: keep-all; }
+        body .aside .links a i {
+          font-size: 20px; }
+        body .aside .links a span {
+          color: #ccc;
+          font-size: 14px;
+          font-weight: 600; }
+          body .aside .links a span:hover {
+            color: #fff; }
+        body .aside .links a:hover {
+          color: #fff; }
   body .aside.active {
     display: block;
     width: 75px; }
+    body .aside.active .links {
+      width: 100%;
+      height: calc(100% - 10vh);
+      padding-top: 30px; }
+      body .aside.active .links a {
+        text-align: center;
+        display: block;
+        color: #ccc; }
+        body .aside.active .links a i {
+          font-size: 1.3rem; }
+        body .aside.active .links a span {
+          display: none; }
   body main {
     margin-left: 250px;
     width: calc(100% - 250px); }
     body main #header {
       width: 100%;
       height: 10vh;
-      background: #262b3c; }
+      background: #262b3c;
+      display: flex;
+      justify-content: space-between; }
       body main #header #navbar {
-        width: 100%;
-        height: 100%;
         display: flex;
         align-items: center; }
         body main #header #navbar a {
@@ -38,25 +80,72 @@ body {
           font-size: 1.1rem; }
           body main #header #navbar a:hover {
             color: #fff; }
+      body main #header .other-nav {
+        height: 100% !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        body main #header .other-nav .country-flag {
+          width: 35px;
+          height: 35px;
+          margin: 0px 10px; }
+          body main #header .other-nav .country-flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; }
+        body main #header .other-nav .user-icon {
+          width: 35px;
+          height: 35px;
+          margin: 10px; }
+          body main #header .other-nav .user-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; }
+        body main #header .other-nav > a {
+          text-decoration: none;
+          color: #ccc;
+          margin: 0px 10px; }
     body main #header.active {
+      width: calc(100% - 250px);
       position: fixed;
       top: 0;
       z-index: 3;
-      transition: 2.7s ease-in-out; }
+      transition: 0s ease-in-out; }
   body main.aside-active {
     margin-left: 75px;
     width: calc(100% - 75px); }
+    body main.aside-active #header.active {
+      width: calc(100% - 75px);
+      position: fixed;
+      top: 0;
+      z-index: 3;
+      transition: 0s ease-in-out; }
 
 @media (max-width: 700px) {
   body main {
     margin-left: 0px;
     width: calc(100% - 0px); }
+    body main #header.active {
+      width: calc(100% - 0px);
+      transition: 0s ease-in-out; }
   body main.aside-active {
     margin-left: 75px;
     width: calc(100% - 75px); }
+    body main.aside-active #header.active {
+      width: calc(100% - 75px);
+      transition: 0s ease-in-out; }
   body .aside {
     display: block;
-    width: 0px; }
+    width: 0px;
+    overflow: hidden; }
+    body .aside .links a {
+      text-align: center; }
+      body .aside .links a span {
+        display: none; }
   body .aside.active {
     display: block;
-    width: 75px; } }
+    width: 75px; }
+    body .aside.active .links a {
+      text-align: center; }
+      body .aside.active .links a span {
+        display: none; } }
