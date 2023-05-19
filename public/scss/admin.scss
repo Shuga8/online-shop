@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: 0.3s ease-in-out;
 }
 
 body {
   background: #222736;
+  position: relative;
 }
 
 aside {
@@ -14,4 +16,33 @@ aside {
   left: 0;
   height: 100vh;
   background: #2e3342;
+  z-index: 7;
+}
+
+main {
+  margin-left: 250px;
+
+  #header {
+    width: 100%;
+    height: 10vh;
+    background: #262b3c;
+
+    #navbar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        padding: 1rem;
+        color: #ccc;
+        font-size: 1.1rem;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
