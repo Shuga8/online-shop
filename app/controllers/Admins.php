@@ -10,6 +10,7 @@ class Admins extends Controller
         $this->adminModel = $this->model('Admin');
     }
 
+    // Index page method
     public function index()
     {
         $data = [
@@ -19,6 +20,7 @@ class Admins extends Controller
         $this->view('Admin/index', $data);
     }
 
+    // Adding new products page
     public function new()
     {
 
@@ -29,6 +31,7 @@ class Admins extends Controller
         $this->view("Admin/add_products", $data);
     }
 
+    // storing new products
     public function store()
     {
 
@@ -56,6 +59,13 @@ class Admins extends Controller
                     header("Location: " . SITE_URL . "/Admins/new");
                     exit(0);
                 }
+            }
+
+            //Check if product name already exists
+            if ($this->adminModel->check_product_name($data['p_name']) == true) {
+                $_SESSION['error'] = "<span style='color: red;'>Error: Product name already exists</span>";
+                header("Location: " . SITE_URL . "/Admins/new");
+                exit(0);
             }
 
             //Validate Floats and Integers
@@ -142,6 +152,7 @@ class Admins extends Controller
                     }
                 }
             } else {
+
                 $_SESSION['error'] = "<span style='color: red;'>Error: Please select an image!</span>";
                 header("Location: " . SITE_URL . "/Admins/new");
                 exit(0);

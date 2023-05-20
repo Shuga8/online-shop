@@ -32,4 +32,23 @@ class Admin
             return false;
         }
     }
+
+    public function check_product_name($name)
+    {
+        //Check database if product name already exists
+        $this->db->query("SELECT * FROM products WHERE product_name = :name");
+
+        //bind name values
+        $this->db->bind(':name', $name);
+
+        //execute query
+        $this->db->execute();
+
+        //check if rowCount is greater than 0
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
