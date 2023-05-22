@@ -51,4 +51,51 @@ class Admin
             return false;
         }
     }
+
+    public function get_total_number_of_products()
+    {
+        //Query to select total number of products from database
+        $this->db->query("SELECT COUNT(*) AS total_items FROM `products`");
+
+        $this->db->execute();
+
+        if ($row = $this->db->single()) {
+
+            return $row->total_items;
+        } else {
+
+            return false;
+        }
+    }
+
+    public function get_all_products_by_pagination($offset, $total_items_per_page)
+    {
+        //select all products from database using limit and offset
+        $this->db->query("SELECT * FROM `products` LIMIT :ofset, :total_items_per_page ");
+
+        //bind values
+        $this->db->bind(':ofset', $offset);
+        $this->db->bind(':total_items_per_page', $total_items_per_page);
+
+        //execute query
+
+        if ($this->db->execute()) {
+
+            // check row count
+            if ($this->db->rowCount() > 0) {
+
+                //return all products in array
+                if ($row = $this->db->resultSet()) {
+
+                    return $row;
+                } else {
+                    return false;
+                }
+            } else {
+                return "No products found";
+            }
+        } else {
+            return false;
+        }
+    }
 }
