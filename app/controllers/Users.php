@@ -27,6 +27,10 @@ class Users extends Controller
         $this->view('Users/sign_in', $data);
     }
 
+    public function auth()
+    {
+    }
+
     public function cart()
     {
         $data = [

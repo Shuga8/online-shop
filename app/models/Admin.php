@@ -195,4 +195,21 @@ class Admin
             return false;
         }
     }
+
+    public function add_discount_to_product($product_id, $discount)
+    {
+        //query to add discount to product in the db
+        $this->db->query("UPDATE `products` SET `product_discount` = :disc WHERE `product_id` = :p_id");
+
+        //bind value
+        $this->db->bind(':disc', $discount);
+        $this->db->bind(':p_id', $product_id);
+
+        //check if it is successfully executed 
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
