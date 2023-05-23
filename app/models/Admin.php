@@ -71,7 +71,7 @@ class Admin
     public function get_all_products_by_pagination($offset, $total_items_per_page)
     {
         //select all products from database using limit and offset
-        $this->db->query("SELECT * FROM `products` LIMIT :ofset, :total_items_per_page ");
+        $this->db->query("SELECT * FROM `products` ORDER BY created_at DESC LIMIT :ofset, :total_items_per_page");
 
         //bind values
         $this->db->bind(':ofset', $offset);

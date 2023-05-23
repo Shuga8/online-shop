@@ -42,6 +42,35 @@ include_once APPROOT . "/views/includes/admin-header.php";
 
         <div class="page-counter-container">
             <strong>Page <?php echo $data['page'] . " of " . $data['total_num_of_pages']; ?></strong>
+
+            <ul class="pagination">
+
+                <li <?php if ($data['page']  <= 1) {
+                        echo "class = 'disabled'";
+                    } ?>>
+                    <a <?php if ($data['page']  > 1) {
+                            echo "href='" . SITE_URL . "/admins/manage/?page=" . $data['previous'] . "'";
+                        } ?>>Previous</a>
+
+                </li>
+                <?php
+
+                if ($data['total_num_of_pages'] < ($data['total_num_of_pages'] + 1)) {
+                    for ($counter = 1; $counter <= $data['total_num_of_pages']; $counter++) {
+                        $className = ($counter == $data['page']) ? "active" : "";
+                        echo "<li class='$className'><a href='" . SITE_URL . "/admins/manage/?page=$counter'>$counter</a></li>";
+                    }
+                }
+
+                ?>
+
+                <li>
+                    <?php if ($data['page'] >= $data['total_num_of_pages']) : ?>
+                        <a>Next</a>
+                    <?php else : ?>
+                        <a href="<?php echo SITE_URL; ?>/admins/manage/?page=<?php echo $data['next']; ?>">Next</a>
+                    <?php endif; ?>
+                </li>
         </div>
 
     </div>

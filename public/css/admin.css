@@ -220,16 +220,16 @@ body {
             flex-direction: column;
             align-items: center;
             justify-content: center; }
-            body main .products-container .products .product .bottom p {
+            body main .products-container .products .product .bottom > p {
               margin-bottom: 10px !important; }
-              body main .products-container .products .product .bottom p:first-child {
+              body main .products-container .products .product .bottom > p:first-child {
                 color: #fff;
                 font-size: 1.2rem; }
-              body main .products-container .products .product .bottom p:nth-child(2) {
+              body main .products-container .products .product .bottom > p:nth-child(2) {
                 color: #ddd;
                 font-size: 0.9rem; }
-              body main .products-container .products .product .bottom p:last-child {
-                color: #024c69;
+              body main .products-container .products .product .bottom > p.amount {
+                color: #0387bc;
                 font-size: 1.1rem; }
             body main .products-container .products .product .bottom a {
               margin-top: 10px !important;
@@ -244,7 +244,25 @@ body {
         border-top: solid 1px #ccc;
         margin: 10px 0px; }
         body main .products-container .page-counter-container strong {
-          color: #bbb; }
+          color: #bbb;
+          margin: 3px; }
+        body main .products-container .page-counter-container ul {
+          float: right;
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none; }
+          body main .products-container .page-counter-container ul li {
+            padding: 6px;
+            border: 1px solid #ccc;
+            color: #ccc; }
+            body main .products-container .page-counter-container ul li a {
+              text-decoration: none;
+              color: #ccc; }
+            body main .products-container .page-counter-container ul li.active {
+              background: #ccc;
+              color: #1d2230; }
+              body main .products-container .page-counter-container ul li.active a {
+                color: #1d2230; }
   body main.aside-active {
     margin-left: 75px;
     width: calc(100% - 75px); }
