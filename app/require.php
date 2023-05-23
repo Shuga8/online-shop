@@ -4,6 +4,7 @@
 require_once 'libraries/Core.php';
 require_once 'libraries/Controller.php';
 require_once 'libraries/Database.php';
+require_once 'vendor/autoload.php';
 
 /* Require once all files from the configurations folder */
 require_once 'configurations/config.php';

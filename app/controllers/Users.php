@@ -31,10 +31,8 @@ class Users extends Controller
     public function auth()
     {
 
-        //cl id => 921814142092-gssil3ab8mghrjd2qje235q5voqivs53.apps.googleusercontent.com
-        // cl secret => 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
-
-        echo "continue";
+        $clientID = "921814142092-gssil3ab8mghrjd2qje235q5voqivs53.apps.googleusercontent.com";
+        $clientSecret = "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";
     }
 
     public function cart()
