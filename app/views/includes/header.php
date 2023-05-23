@@ -100,7 +100,7 @@
                         <li class="<?php echo $data['cont-class']; ?>"><a href="<?php echo SITE_URL;  ?>/contact">Contact</a></li>
 
                         <?php if (!isset($_SESSION['id'])) : ?>
-                            <li class=""><a href="<?php echo SITE_URL;  ?>/login">Login</a></li>
+                            <li class="<?php echo $data['login-class']; ?>"><a href="<?php echo SITE_URL;  ?>/login">Login</a></li>
                         <?php else : ?>
                             <li class=""><a href="<?php echo SITE_URL;  ?>/logout">Logout</a></li>
                         <?php endif; ?>

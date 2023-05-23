@@ -21,7 +21,8 @@ class Users extends Controller
             'home-class' => '',
             'about-class' => '',
             'shop-class' => '',
-            'cont-class' => ''
+            'cont-class' => '',
+            'login-class' => 'active'
         ];
 
         $this->view('Users/sign_in', $data);
@@ -29,6 +30,9 @@ class Users extends Controller
 
     public function auth()
     {
+
+        //cl id => 921814142092-gssil3ab8mghrjd2qje235q5voqivs53.apps.googleusercontent.com
+        // cl secret => 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
     }
 
     public function cart()

@@ -22,7 +22,8 @@ class Pages extends Controller
             'home-class' => 'active',
             'about-class' => '',
             'shop-class' => '',
-            'cont-class' => ''
+            'cont-class' => '',
+            'login-class' => ''
         ];
 
         $this->view('Pages/index', $data);
@@ -36,7 +37,8 @@ class Pages extends Controller
             'home-class' => '',
             'about-class' => 'active',
             'shop-class' => '',
-            'cont-class' => ''
+            'cont-class' => '',
+            'login-class' => ''
         ];
 
         $this->view('Pages/about', $data);
@@ -50,7 +52,8 @@ class Pages extends Controller
             'home-class' => '',
             'about-class' => '',
             'shop-class' => 'active',
-            'cont-class' => ''
+            'cont-class' => '',
+            'login-class' => ''
         ];
 
         $this->view('Pages/shop', $data);
@@ -64,7 +67,8 @@ class Pages extends Controller
             'home-class' => '',
             'about-class' => '',
             'shop-class' => '',
-            'cont-class' => 'active'
+            'cont-class' => 'active',
+            'login-class' => ''
         ];
 
         $this->view('Pages/contact', $data);
