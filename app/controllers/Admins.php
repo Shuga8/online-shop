@@ -14,74 +14,12 @@ class Admins extends Controller
     public function index()
     {
 
+        $data = [
+            'title' => 'Dashboard'
+        ];
+
 
         //Check if page number variable is set
-        if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] > 0) {
-
-            //Check if page number only consists of numbers 
-            if (!preg_match("/^[1-9]{1,}$/", $_GET['page'])) {
-                $page = 1;
-            } else {
-                $page =  $_GET['page'];
-            }
-        } else {
-            $page = 1;
-        }
-
-        //total items that should exists per page
-        $total_items_per_page = 9;
-
-        //offset changes products shown depending on page number
-        $offset = ($page - 1) * $total_items_per_page;
-        $previous_page = $page - 1;
-        $next_page = $page + 1;
-        $adjacents = 2;
-
-        //Get total amout of products 
-        $total_items = $this->adminModel->get_total_number_of_products();
-
-        //check items errors
-        if ($total_items == false) {
-            $total_items = 0;
-        } else {
-            $total_items = $total_items;
-        }
-
-        //total number of pages is decided by the rounded up number of the division of total number of products by total items per page
-
-        $total_number_of_pages = ceil($total_items / $total_items_per_page);
-        $second_last = $total_number_of_pages - 1;
-
-        //check if page number passed in the url is greater than the total number of page then redirect
-        if ($page > $total_number_of_pages) {
-            header("Location: " . SITE_URL . "/Admins/index/?page=$total_number_of_pages");
-            exit(0);
-        }
-
-        $message = "";
-
-        //get all products from db by pagination
-        $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
-
-        if ($products == "No products found") {
-            $message = "No products found";
-        } elseif ($products == false) {
-            $message = "An error Occured please try again !";
-        } else {
-            $message = "ok";
-        }
-
-
-
-
-        $data = [
-            'title' => 'Admin',
-            'products' => $products,
-            'previous' => $previous_page,
-            'next' => $next_page,
-            'message' => $message,
-            'total_num_of_pages' => $total_number_of_pages
-        ];
 
         $this->view('Admin/index', $data);
     }
@@ -91,7 +29,7 @@ class Admins extends Controller
     {
 
         $data = [
-            'title' => 'Add products'
+            'title' => 'New'
         ];
 
         $this->view("Admin/add_products", $data);
@@ -128,11 +66,11 @@ class Admins extends Controller
             }
 
             //Check if product name already exists
-            if ($this->adminModel->check_product_name($data['p_name']) == true) {
-                $_SESSION['error'] = "<span style='color: red;'>Error: Product name already exists</span>";
-                header("Location: " . SITE_URL . "/Admins/new");
-                exit(0);
-            }
+            // if ($this->adminModel->check_product_name($data['p_name']) == true) {
+            //     $_SESSION['error'] = "<span style='color: red;'>Error: Product name already exists</span>";
+            //     header("Location: " . SITE_URL . "/Admins/new");
+            //     exit(0);
+            // }
 
             //Validate Floats and Integers
 
@@ -195,7 +133,7 @@ class Admins extends Controller
                             if ($upload == true) {
 
                                 $data['imageName'] = $newImgName;
-                                $data['p_id'] = uniqid() . $data['p_name'];
+                                $data['p_id'] = time() . uniqid() . $data['p_name'];
 
                                 //Call Model upload Method
                                 $uploader = $this->adminModel->store_new_product($data);
@@ -224,5 +162,79 @@ class Admins extends Controller
                 exit(0);
             }
         }
+    }
+
+    //manage products
+    public function manage()
+    {
+        if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] > 0) {
+
+            //Check if page number only consists of numbers 
+            if (!preg_match("/^[1-9]{1,}$/", $_GET['page'])) {
+                $page = 1;
+            } else {
+                $page =  $_GET['page'];
+            }
+        } else {
+            $page = 1;
+        }
+
+        //total items that should exists per page
+        $total_items_per_page = 6;
+
+        //offset changes products shown depending on page number
+        $offset = ($page - 1) * $total_items_per_page;
+        $previous_page = $page - 1;
+        $next_page = $page + 1;
+        $adjacents = 2;
+
+        //Get total amout of products 
+        $total_items = $this->adminModel->get_total_number_of_products();
+
+        //check items errors
+        if ($total_items == false) {
+            $total_items = 0;
+        } else {
+            $total_items = $total_items;
+        }
+
+        //total number of pages is decided by the rounded up number of the division of total number of products by total items per page
+
+        $total_number_of_pages = ceil($total_items / $total_items_per_page);
+        $second_last = $total_number_of_pages - 1;
+
+        //check if page number passed in the url is greater than the total number of page then redirect
+        if ($page > $total_number_of_pages) {
+            header("Location: " . SITE_URL . "/Admins/manage/?page=$total_number_of_pages");
+            exit(0);
+        }
+
+        $message = "";
+
+        //get all products from db by pagination
+        $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
+
+        if ($products == "No products found") {
+            $message = "No products found";
+        } elseif ($products == false) {
+            $message = "An error Occured please try again !";
+        } else {
+            $message = "ok";
+        }
+
+
+
+
+        $data = [
+            'title' => 'Manage',
+            'page' => $page,
+            'products' => $products,
+            'previous' => $previous_page,
+            'next' => $next_page,
+            'message' => $message,
+            'total_num_of_pages' => $total_number_of_pages
+        ];
+
+        $this->view("Admin/manage_products", $data);
     }
 }

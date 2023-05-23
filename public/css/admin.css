@@ -108,6 +108,17 @@ body {
           text-decoration: none;
           color: #ccc;
           margin: 0px 10px; }
+    body main .banner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 18px 14px; }
+      body main .banner .first {
+        font-size: 1.1rem;
+        color: #eee; }
+      body main .banner .last {
+        font-size: 0.9rem;
+        color: #aaa; }
     body main #header.active {
       width: calc(100% - 250px);
       position: fixed;
@@ -179,6 +190,61 @@ body {
           background: #024c69;
           border: 2px solid #024c69;
           cursor: pointer; }
+    body main .products-container {
+      width: 100%;
+      display: block;
+      padding: 1rem; }
+      body main .products-container .products {
+        width: 100%;
+        min-height: 40vh;
+        display: flex;
+        flex-wrap: wrap; }
+        body main .products-container .products .product {
+          display: block;
+          width: 300px;
+          height: 400px;
+          border-radius: 5px;
+          box-shadow: 2px 2px 8px #161b27, -2px -2px 8px #161b27;
+          margin: 15px 0px 15px 15px; }
+          body main .products-container .products .product .top {
+            width: 300px;
+            height: 200px; }
+            body main .products-container .products .product .top img {
+              border-radius: 5px 5px 0px 0px;
+              background-color: #fff;
+              object-fit: auto; }
+          body main .products-container .products .product .bottom {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; }
+            body main .products-container .products .product .bottom p {
+              margin-bottom: 10px !important; }
+              body main .products-container .products .product .bottom p:first-child {
+                color: #fff;
+                font-size: 1.2rem; }
+              body main .products-container .products .product .bottom p:nth-child(2) {
+                color: #ddd;
+                font-size: 0.9rem; }
+              body main .products-container .products .product .bottom p:last-child {
+                color: #024c69;
+                font-size: 1.1rem; }
+            body main .products-container .products .product .bottom a {
+              margin-top: 10px !important;
+              text-decoration: none;
+              background: #245d535b;
+              color: #fff;
+              padding: 10px 12px; }
+              body main .products-container .products .product .bottom a:hover {
+                background: #245d53; }
+      body main .products-container .page-counter-container {
+        padding: 1rem;
+        border-top: solid 1px #ccc;
+        margin: 10px 0px; }
+        body main .products-container .page-counter-container strong {
+          color: #bbb; }
   body main.aside-active {
     margin-left: 75px;
     width: calc(100% - 75px); }

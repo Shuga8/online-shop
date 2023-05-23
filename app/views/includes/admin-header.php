@@ -23,7 +23,7 @@
 
         <div class="links">
             <a href="<?php echo SITE_URL; ?>/Admins/index"><i class="fa-solid fa-gauge"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span></a>
-            <a href=""><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Manage products</span></a>
+            <a href="<?php echo SITE_URL; ?>/Admins/manage"><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Manage products</span></a>
             <a href="<?php echo SITE_URL; ?>/Admins/new"><i class="fa-solid fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Product</span></a>
             <a href=""><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Add Admin</span></a>
             <a href=""><i class="fa-solid fa-power-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Sign out</span></a>
@@ -47,7 +47,17 @@
                     <img src="<?php echo SITE_URL; ?>/public/images/user_icon.png" alt="User icon /">
                 </div>
 
-                <a href=""><i class="fas fa-gear"></i> Settings</a>
+                <a href=""><i class="fas fa-gear"></i></a>
 
             </div>
         </header>
+
+        <div class="banner">
+            <div class="first">
+                <?php echo $data['title'] ?>
+            </div>
+
+            <div class="last">
+                <?php echo 'Admin \\ ' . $data['title'] ?>
+            </div>
+        </div>
