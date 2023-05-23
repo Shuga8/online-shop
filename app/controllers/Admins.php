@@ -241,5 +241,11 @@ class Admins extends Controller
     //Add new admin
     public function add()
     {
+
+        $data = [
+            'title' => 'Add admin'
+        ];
+
+        $this->view('Admin/new_admin', $data);
     }
 }

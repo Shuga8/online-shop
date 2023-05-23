@@ -98,4 +98,101 @@ class Admin
             return false;
         }
     }
+
+    public function check_admin_by_username($uname)
+    {
+        //query to check if admin username exists
+        $this->db->query("SELECT COUNT(*) as name_count FROM `admins` WHERE username = :uname");
+
+        //bind values
+        $this->db->bind(':uname', $uname);
+
+        //execute query
+        $this->db->execute();
+
+        if ($count = $this->db->single()->name_count) {
+            if ($count > 0) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function check_admin_by_email($email)
+    {
+
+        //query to check if admin email exists
+        $this->db->query("SELECT COUNT(*) as email_count FROM `admins` WHERE email = :email");
+
+        //bind values
+        $this->db->bind(':email', $email);
+
+        //execute query
+        $this->db->execute();
+
+        if ($count = $this->db->single()->email_count) {
+            if ($count > 0) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function add_new_admin($data)
+    {
+
+        //query to insert new admin
+        $this->db->query("INSERT INTO `admins`(username, email, password, role) VALUES(:uname, :email, :pass, :role)");
+
+        //bind values
+        $this->db->bind(':uname', $data['uname']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':pass', $data['pass']);
+        $this->db->bind(':role', $data['role']);
+
+        //check if query is successfully executed
+        if ($this->db->execute()) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+    public function update_admin_password($email, $pass)
+    {
+        //query to update admin's password
+        $this->db->query("UPDATE `admins` SET `password` = :pass WHERE email = :email");
+
+        //bind value
+        $this->db->bind(':pass', $pass);
+        $this->db->bind(':email', $email);
+
+        //check if it is successfully executed 
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function add_discount_to_all($discount)
+    {
+
+        //query to add discount to all products in the db
+        $this->db->query("UPDATE `products` SET `product_discount` = :disc");
+
+        //bind value
+        $this->db->bind(':disc', $discount);
+
+        //check if it is successfully executed 
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
