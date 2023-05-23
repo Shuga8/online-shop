@@ -237,4 +237,9 @@ class Admins extends Controller
 
         $this->view("Admin/manage_products", $data);
     }
+
+    //Add new admin
+    public function add()
+    {
+    }
 }

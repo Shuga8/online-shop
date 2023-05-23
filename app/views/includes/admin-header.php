@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/public/fonts/icomoon/style.css">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/public/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
             <a href="<?php echo SITE_URL; ?>/Admins/index"><i class="fa-solid fa-gauge"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span></a>
             <a href="<?php echo SITE_URL; ?>/Admins/manage"><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Manage products</span></a>
             <a href="<?php echo SITE_URL; ?>/Admins/new"><i class="fa-solid fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Product</span></a>
-            <a href=""><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Add Admin</span></a>
+            <a href="<?php echo SITE_URL; ?>/Admins/add"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Add Admin</span></a>
             <a href=""><i class="fa-solid fa-power-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Sign out</span></a>
         </div>
 
