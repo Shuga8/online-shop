@@ -31,7 +31,7 @@ include_once APPROOT . "/views/includes/header.php";
 
     .auth-container a {
         padding: 10px 20px;
-        background: #5199fc;
+        background: #5199ffa9;
         color: #fff;
         font-size: 1.1rem;
         border-radius: 3px;
@@ -46,9 +46,7 @@ include_once APPROOT . "/views/includes/header.php";
     <div class="container">
         <div class="auth-container">
 
-            <a href="">Sign in <img src="<?php echo SITE_URL; ?>/public/images/google_icon.png" alt="Google /" style="width: 25px;height:25px;object-fit:contain;"></a>
-            <pre> - OR - </pre>
-            <a href="">Sign up <img src="<?php echo SITE_URL; ?>/public/images/google_icon.png" alt="Google /" style="width: 25px;height:25px;object-fit:contain;"></a>
+            <a href="<?php echo SITE_URL; ?>/users/auth">Sign in <img src="<?php echo SITE_URL; ?>/public/images/google_icon.png" alt="Google /" style="width: 25px;height:25px;object-fit:contain;"></a>
         </div>
 
     </div>
