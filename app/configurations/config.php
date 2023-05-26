@@ -11,4 +11,4 @@ define("SITE_URL", "http://localhost/online-shop");
 
 define("APPROOT", dirname(dirname(__FILE__)));
 
-define("SITE_NAME", "Online shop");
+define("SITE_NAME", "Saint Iconic Luxury");
