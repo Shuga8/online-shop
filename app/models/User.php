@@ -23,6 +23,8 @@ class User
 
             if ($count = $this->db->single()->email_count) {
                 return true;
+            } else {
+                return false;
             }
         }
     }

@@ -46,7 +46,7 @@ include_once APPROOT . "/views/includes/header.php";
     <div class="container">
         <div class="auth-container">
 
-            <a href="<?php echo SITE_URL; ?>/users/auth">Sign in <img src="<?php echo SITE_URL; ?>/public/images/google_icon.png" alt="Google /" style="width: 25px;height:25px;object-fit:contain;"></a>
+            <a href="<?= $data['gclient']->createAuthUrl(); ?>">Sign in <img src="<?php echo SITE_URL; ?>/public/images/google_icon.png" alt="Google /" style="width: 25px;height:25px;object-fit:contain;"></a>
         </div>
 
     </div>
