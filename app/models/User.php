@@ -55,9 +55,9 @@ class User
         $this->db->query("INSERT INTO `users`(user_id, firstname, lastname, email, user_image) VALUES (:user_id, :firstname, :lastname, :email, :user_image)");
 
         //Bind values
-        $this->db->bind(':user_id', $data['uid']);
-        $this->db->bind(':firstname', $data['firstname']);
-        $this->db->bind(':lastname', $data['lastname']);
+        $this->db->bind(':user_id', $data['g_uid']);
+        $this->db->bind(':firstname', $data['fname']);
+        $this->db->bind(':lastname', $data['lname']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':user_image', $data['uimg']);
 

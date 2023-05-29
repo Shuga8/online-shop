@@ -93,7 +93,7 @@ class Users extends Controller
             'fname' => $_SESSION['user_arr']['givenName'],
             'lname' => $_SESSION['user_arr']['familyName'],
             'email' => $_SESSION['user_arr']['email'],
-            'img' => $_SESSION['user_arr']['picture']
+            'uimg' => $_SESSION['user_arr']['picture']
         ];
 
         // print_r($data);
@@ -101,9 +101,9 @@ class Users extends Controller
         $emailExists = $this->userModel->check_if_email_exists($data['email']);
 
         if ($emailExists == false) {
-            //Sign Up
 
-
+            if ($this->userModel->sign_up_user_using_google_auth($data)) {
+            }
         } else {
 
             //Sign In
