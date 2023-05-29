@@ -99,7 +99,7 @@
                         <li class="<?php echo $data['shop-class']; ?>"><a href="<?php echo SITE_URL;  ?>/shop">Shop</a></li>
                         <li class="<?php echo $data['cont-class']; ?>"><a href="<?php echo SITE_URL;  ?>/contact">Contact</a></li>
 
-                        <?php if (!isset($_SESSION['id'])) : ?>
+                        <?php if (!isset($_SESSION['g_uid'])) : ?>
                             <li class="<?php echo $data['login-class']; ?>"><a href="<?php echo SITE_URL;  ?>/login">Login</a></li>
                         <?php else : ?>
                             <li class=""><a href="<?php echo SITE_URL;  ?>/logout">Logout</a></li>

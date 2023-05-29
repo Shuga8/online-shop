@@ -16,6 +16,10 @@ class Users extends Controller
     public function login()
     {
 
+        if (isset($_SESSION['g_uid'])) {
+            header('location: ' . SITE_URL . '/index');
+        }
+
         if (!isset($_SESSION['ucode']) || (isset($_SESSION['ucode']) && empty($_SESSION['ucode']))) {
             if (strstr($_SERVER['PHP_SELF'], 'login') === false)
                 header('location: ' . SITE_URL . '/login');
@@ -102,13 +106,55 @@ class Users extends Controller
 
         if ($emailExists == false) {
 
-            if ($this->userModel->sign_up_user_using_google_auth($data)) {
+            // Sign Up
+            if ($this->userModel->sign_up_user_using_google_auth($data) == true) {
+
+                $_SESSION['g_uid'] = $data['g_uid'];
+                $_SESSION['fname'] = $data['fname'];
+                $_SESSION['lname'] = $data['lname'];
+                $_SESSION['email'] = $data['email'];
+                $_SESSION['uimg'] = $data['uimg'];
+
+                sleep(1);
+
+                header('Location: ' . SITE_URL . '/index');
+                exit(0);
+            } else {
+                session_unset($_SESSION['ucode']);
+
+                sleep(1);
+                header('Location: ' . SITE_URL . '/login');
             }
         } else {
 
             //Sign In
-            echo "Email exists";
+            $user = $this->userModel->login_user_after_google_auth($data['email']);
+            if ($user == false) {
+                session_unset($_SESSION['ucode']);
+
+                sleep(1);
+                header('Location: ' . SITE_URL . '/login');
+            } else {
+
+                $_SESSION['g_uid'] = $user->user_id;
+                $_SESSION['fname'] = $user->firtname;
+                $_SESSION['lname'] = $user->lastname;
+                $_SESSION['email'] = $user->email;
+                $_SESSION['uimg'] = $user->user_image;
+
+                sleep(1);
+                header('Location: ' . SITE_URL . '/index');
+            }
         }
+    }
+
+    public function logout()
+    {
+
+        session_unset($_SESSION['ucode']);
+        session_destroy();
+        sleep(1);
+        header('Location: ' . SITE_URL . '/login');
     }
 
     public function cart()

@@ -107,6 +107,19 @@ class Core
             //call a callback of an array of our parameters
             call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
             exit();
+        } elseif ($url[0] == "logout") {
+
+            $this->currentController = 'Users';
+            $this->currentMethod = 'logout';
+            require_once '../app/controllers/' . $this->currentController . '.php';
+            $this->currentController = new $this->currentController;
+
+            //Get parameters passed using our url 
+            $this->params = $url ? array_values($url) : [];
+
+            //call a callback of an array of our parameters
+            call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
+            exit();
         } else {
 
             /* Look into the Controllers folder for the first part of our url using ucwords for capitalized letter to check if the first letter is capital case */
