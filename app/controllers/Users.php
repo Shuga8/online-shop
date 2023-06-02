@@ -16,16 +16,14 @@ class Users extends Controller
     public function login()
     {
 
-        if (isset($_SESSION['g_uid'])) {
-            header('location: ' . SITE_URL . '/index');
-        }
-
         if (!isset($_SESSION['ucode']) || (isset($_SESSION['ucode']) && empty($_SESSION['ucode']))) {
-            if (strstr($_SERVER['PHP_SELF'], 'login') === false)
+            if ($_GET['url'] !== 'login')
                 header('location: ' . SITE_URL . '/login');
         } else {
-            header("Location: " . SITE_URL . '/users/auth');
+            if ($_GET['url'] !== 'login')
+                header('location: ' . SITE_URL . '/index');
         }
+
 
         $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
         $clientSecret = "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";
@@ -91,67 +89,64 @@ class Users extends Controller
 
     public function auth()
     {
-        // print_r($_SESSION['user_arr']);
-        $data = [
-            'g_uid' => $_SESSION['user_arr']['id'],
-            'fname' => $_SESSION['user_arr']['givenName'],
-            'lname' => $_SESSION['user_arr']['familyName'],
-            'email' => $_SESSION['user_arr']['email'],
-            'uimg' => $_SESSION['user_arr']['picture']
-        ];
+        print_r($_SESSION['user_arr']);
+        // $data = [
+        //     'g_uid' => $_SESSION['user_arr']['id'],
+        //     'fname' => $_SESSION['user_arr']['givenName'],
+        //     'lname' => $_SESSION['user_arr']['familyName'],
+        //     'email' => $_SESSION['user_arr']['email'],
+        //     'uimg' => $_SESSION['user_arr']['picture']
+        // ];
 
         // print_r($data);
 
-        $emailExists = $this->userModel->check_if_email_exists($data['email']);
+        // $emailExists = $this->userModel->check_if_email_exists($data['email']);
 
-        if ($emailExists == false) {
+        // if ($emailExists == false) {
 
-            // Sign Up
-            if ($this->userModel->sign_up_user_using_google_auth($data) == true) {
+        //     // Sign Up
+        //     if ($this->userModel->sign_up_user_using_google_auth($data) == true) {
 
-                $_SESSION['g_uid'] = $data['g_uid'];
-                $_SESSION['fname'] = $data['fname'];
-                $_SESSION['lname'] = $data['lname'];
-                $_SESSION['email'] = $data['email'];
-                $_SESSION['uimg'] = $data['uimg'];
+        //         $_SESSION['g_uid'] = $data['g_uid'];
+        //         $_SESSION['fname'] = $data['fname'];
+        //         $_SESSION['lname'] = $data['lname'];
+        //         $_SESSION['email'] = $data['email'];
+        //         $_SESSION['uimg'] = $data['uimg'];
 
-                sleep(1);
+        //         sleep(1);
 
-                header('Location: ' . SITE_URL . '/index');
-                exit(0);
-            } else {
-                session_unset($_SESSION['ucode']);
+        //         header('Location: ' . SITE_URL . '/index');
+        //         exit(0);
+        //     } else {
+        //         session_destroy();
+        //         sleep(1);
+        //         header('Location: ' . SITE_URL . '/login');
+        //     }
+        // } else {
 
-                sleep(1);
-                header('Location: ' . SITE_URL . '/login');
-            }
-        } else {
+        //     //Sign In
+        //     $user = $this->userModel->login_user_after_google_auth($data['email']);
+        //     if ($user == false) {
+        //         session_destroy();
 
-            //Sign In
-            $user = $this->userModel->login_user_after_google_auth($data['email']);
-            if ($user == false) {
-                session_unset($_SESSION['ucode']);
+        //         sleep(1);
+        //         header('Location: ' . SITE_URL . '/login');
+        //     } else {
 
-                sleep(1);
-                header('Location: ' . SITE_URL . '/login');
-            } else {
+        //         $_SESSION['g_uid'] = $user->user_id;
+        //         $_SESSION['fname'] = $user->firtname;
+        //         $_SESSION['lname'] = $user->lastname;
+        //         $_SESSION['email'] = $user->email;
+        //         $_SESSION['uimg'] = $user->user_image;
 
-                $_SESSION['g_uid'] = $user->user_id;
-                $_SESSION['fname'] = $user->firtname;
-                $_SESSION['lname'] = $user->lastname;
-                $_SESSION['email'] = $user->email;
-                $_SESSION['uimg'] = $user->user_image;
-
-                sleep(1);
-                header('Location: ' . SITE_URL . '/index');
-            }
-        }
+        //         sleep(1);
+        //         header('Location: ' . SITE_URL . '/index');
+        //     }
+        // }
     }
 
     public function logout()
     {
-
-        session_unset($_SESSION['ucode']);
         session_destroy();
         sleep(1);
         header('Location: ' . SITE_URL . '/login');
