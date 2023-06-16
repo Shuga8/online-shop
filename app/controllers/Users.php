@@ -17,9 +17,10 @@ class Users extends Controller
     {
 
         if (isset($_SESSION['ucode'])) {
-            echo $_SESSION['ucode'];
+            header("Location: " . SITE_URL . "/users/auth");
+            exit(0);
         } else {
-            echo "not set";
+            session_destroy();
         }
 
         $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
@@ -68,6 +69,9 @@ class Users extends Controller
                     $_SESSION['user_arr'][$k] = $v;
                 }
                 $_SESSION['ucode'] = $_GET['code'];
+
+                header("Location: " . SITE_URL . "/users/auth");
+                exit(0);
             }
         }
 
@@ -88,60 +92,64 @@ class Users extends Controller
     public function auth()
     {
 
-        print_r($_SESSION['user_arr']);
-        // $data = [
-        //     'g_uid' => $_SESSION['user_arr']['id'],
-        //     'fname' => $_SESSION['user_arr']['givenName'],
-        //     'lname' => $_SESSION['user_arr']['familyName'],
-        //     'email' => $_SESSION['user_arr']['email'],
-        //     'uimg' => $_SESSION['user_arr']['picture']
-        // ];
+        $data = [
+            'g_uid' => $_SESSION['user_arr']['id'],
+            'fname' => $_SESSION['user_arr']['givenName'],
+            'lname' => $_SESSION['user_arr']['familyName'],
+            'email' => $_SESSION['user_arr']['email'],
+            'uimg' => $_SESSION['user_arr']['picture']
+        ];
 
-        // print_r($data);
+        print_r($data);
 
-        // $emailExists = $this->userModel->check_if_email_exists($data['email']);
+        $google_id_exits = $this->userModel->check_google_id_if_exists($data['g_uid']);
 
-        // if ($emailExists == false) {
+        if ($google_id_exits == false) {
+            // Sign user up first
+            $sign_up_user = $this->sign_up($data);
 
-        //     // Sign Up
-        //     if ($this->userModel->sign_up_user_using_google_auth($data) == true) {
+            //if user successfully sign's up then sign in
+            $user = $this->sign_in($data['email']);
 
-        //         $_SESSION['g_uid'] = $data['g_uid'];
-        //         $_SESSION['fname'] = $data['fname'];
-        //         $_SESSION['lname'] = $data['lname'];
-        //         $_SESSION['email'] = $data['email'];
-        //         $_SESSION['uimg'] = $data['uimg'];
+            if ($user ==  false) {
+                http_response_code(403);
+                $_SESSION['login_error_message'] =  "Access Forbidden";
+                header("Location: " . SITE_URL);
+                exit(0);
+            } else {
 
-        //         sleep(1);
+                $_SESSION['g_uid'] = $user->user_id;
+                $_SESSION['g_fname'] = $user->firstname;
+                $_SESSION['g_lname'] = $user->lastname;
+                $_SESSION['g_email'] = $user->email;
+                $_SESSION['g_img'] = $user->user_image;
 
-        //         header('Location: ' . SITE_URL . '/index');
-        //         exit(0);
-        //     } else {
-        //         session_destroy();
-        //         sleep(1);
-        //         header('Location: ' . SITE_URL . '/login');
-        //     }
-        // } else {
+                header('Location: ' . SITE_URL . '/index');
+            }
+        } else {
+            echo "This id has an account";
+        }
+    }
 
-        //     //Sign In
-        //     $user = $this->userModel->login_user_after_google_auth($data['email']);
-        //     if ($user == false) {
-        //         session_destroy();
+    public function sign_in($email)
+    {
 
-        //         sleep(1);
-        //         header('Location: ' . SITE_URL . '/login');
-        //     } else {
+        if (!$this->userModel->login_user_after_google_auth($email)) {
+            return false;
+        } else {
+            $user = $this->userModel->login_user_after_google_auth($email);
 
-        //         $_SESSION['g_uid'] = $user->user_id;
-        //         $_SESSION['fname'] = $user->firtname;
-        //         $_SESSION['lname'] = $user->lastname;
-        //         $_SESSION['email'] = $user->email;
-        //         $_SESSION['uimg'] = $user->user_image;
+            return $user;
+        }
+    }
 
-        //         sleep(1);
-        //         header('Location: ' . SITE_URL . '/index');
-        //     }
-        // }
+    public function sign_up($data)
+    {
+        if (!$this->userModel->sign_up_user_using_google_auth($data)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function logout()

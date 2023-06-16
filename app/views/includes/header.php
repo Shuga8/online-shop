@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/public/css/style.css">
 
+    <script src="//unpkg.com/alpinejs" defer></script>
+
 </head>
 
 <body>

@@ -10,6 +10,26 @@ class User
         $this->db = new Database();
     }
 
+    public function check_google_id_if_exists($id)
+    {
+
+        //Query to check for id in the database
+        $this->db->query("SELECT * FROM `users` WHERE `user_id` = :us_id");
+
+        //bind prepared values
+        $this->db->bind(':us_id', $id);
+
+        //execute query
+        $this->db->execute();
+
+        //check if rowcount is greater than 0
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function check_if_email_exists($email)
     {
         //Query to check if email exists
