@@ -20,73 +20,73 @@ class Users extends Controller
             header("Location: " . SITE_URL . "/users/auth");
             exit(0);
         } else {
-            session_destroy();
-        }
-
-        $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
-        $clientSecret = "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";
 
 
-        // Google API Client
-        $gclient = new Google_Client();
-
-        // Set the ClientID
-        $gclient->setClientId($clientID);
-        // Set the ClientSecret
-        $gclient->setClientSecret($clientSecret);
-        // Set the Redirect URL after successful Login
-        $gclient->setRedirectUri(SITE_URL . '/login');
-
-        // Adding the Scope
-        $gclient->addScope('email');
-        $gclient->addScope('profile');
-
-        if (isset($_GET['code'])) {
-            // Get Token
-            $token = $gclient->fetchAccessTokenWithAuthCode($_GET['code']);
+            $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
+            $clientSecret = "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";
 
 
+            // Google API Client
+            $gclient = new Google_Client();
 
-            // Check if fetching token did not return any errors
-            if (!isset($token['error'])) {
-                // Setting Access token
-                $gclient->setAccessToken($token['access_token']);
+            // Set the ClientID
+            $gclient->setClientId($clientID);
+            // Set the ClientSecret
+            $gclient->setClientSecret($clientSecret);
+            // Set the Redirect URL after successful Login
+            $gclient->setRedirectUri(SITE_URL . '/login');
 
-                // store access token
-                $_SESSION['access_token'] = $token['access_token'];
+            // Adding the Scope
+            $gclient->addScope('email');
+            $gclient->addScope('profile');
 
-                // Get Account Profile using Google Service
-                $gservice = new Google_Service_Oauth2($gclient);
+            if (isset($_GET['code'])) {
+                // Get Token
+                $token = $gclient->fetchAccessTokenWithAuthCode($_GET['code']);
 
-                // Get User Data
-                $udata = $gservice->userinfo->get();
 
-                $_SESSION['user_arr'] = [];
 
-                foreach ($udata as $k => $v) {
-                    $_SESSION['login_' . $k] = $v;
-                    array_push($_SESSION['user_arr'], $k);
-                    $_SESSION['user_arr'][$k] = $v;
+                // Check if fetching token did not return any errors
+                if (!isset($token['error'])) {
+                    // Setting Access token
+                    $gclient->setAccessToken($token['access_token']);
+
+                    // store access token
+                    $_SESSION['access_token'] = $token['access_token'];
+
+                    // Get Account Profile using Google Service
+                    $gservice = new Google_Service_Oauth2($gclient);
+
+                    // Get User Data
+                    $udata = $gservice->userinfo->get();
+
+                    $_SESSION['user_arr'] = [];
+
+                    foreach ($udata as $k => $v) {
+                        $_SESSION['login_' . $k] = $v;
+                        array_push($_SESSION['user_arr'], $k);
+                        $_SESSION['user_arr'][$k] = $v;
+                    }
+                    $_SESSION['ucode'] = $_GET['code'];
+
+                    header("Location: " . SITE_URL . "/users/auth");
+                    exit(0);
                 }
-                $_SESSION['ucode'] = $_GET['code'];
-
-                header("Location: " . SITE_URL . "/users/auth");
-                exit(0);
             }
+
+
+            $data = [
+                'title' => 'Login',
+                'home-class' => '',
+                'about-class' => '',
+                'shop-class' => '',
+                'cont-class' => '',
+                'login-class' => 'active',
+                'gclient' => $gclient
+            ];
+
+            $this->view('Users/sign_in', $data);
         }
-
-
-        $data = [
-            'title' => 'Login',
-            'home-class' => '',
-            'about-class' => '',
-            'shop-class' => '',
-            'cont-class' => '',
-            'login-class' => 'active',
-            'gclient' => $gclient
-        ];
-
-        $this->view('Users/sign_in', $data);
     }
 
     public function auth()
@@ -108,13 +108,45 @@ class Users extends Controller
             // Sign user up first
             $sign_up_user = $this->sign_up($data);
 
-            //if user successfully sign's up then sign in
+            //if sign up was not successful
+            if (!$sign_up_user) {
+                session_unset($_SESSION['ucode']);
+                http_response_code(401);
+                $_SESSION['error_message'] =  "Error: please try again";
+                header("Location: " . SITE_URL);
+                exit(0);
+            } else {
+
+                //if user successfully sign's up then sign in
+                $user = $this->sign_in($data['email']);
+
+                if ($user ==  false) {
+                    session_unset($_SESSION['ucode']);
+                    http_response_code(403);
+                    $_SESSION['error_message'] =  "Access Forbidden";
+                    header("Location: " . SITE_URL);
+                    exit(0);
+                } else {
+
+                    $_SESSION['g_uid'] = $user->user_id;
+                    $_SESSION['g_fname'] = $user->firstname;
+                    $_SESSION['g_lname'] = $user->lastname;
+                    $_SESSION['g_email'] = $user->email;
+                    $_SESSION['g_img'] = $user->user_image;
+
+                    header('Location: ' . SITE_URL . '/index');
+                    exit(0);
+                }
+            }
+        } else {
+            //directly login if google user id is found in the database
             $user = $this->sign_in($data['email']);
 
             if ($user ==  false) {
+                session_unset($_SESSION['ucode']);
                 http_response_code(403);
-                $_SESSION['login_error_message'] =  "Access Forbidden";
-                header("Location: " . SITE_URL);
+                $_SESSION['error_message'] =  "Access Forbidden";
+                header("Location: " . SITE_URL . "/index");
                 exit(0);
             } else {
 
@@ -125,9 +157,8 @@ class Users extends Controller
                 $_SESSION['g_img'] = $user->user_image;
 
                 header('Location: ' . SITE_URL . '/index');
+                exit(0);
             }
-        } else {
-            echo "This id has an account";
         }
     }
 
