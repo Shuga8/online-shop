@@ -98,7 +98,7 @@
                             </ul> -->
                         </li>
 
-                        <li class="<?php echo $data['shop-class']; ?>"><a href="<?php echo SITE_URL;  ?>/shop">Shop</a></li>
+                        <li class="<?php echo $data['shop-class']; ?>"><a href="<?php echo SITE_URL;  ?>/pages/shop">Shop</a></li>
                         <li class="<?php echo $data['cont-class']; ?>"><a href="<?php echo SITE_URL;  ?>/contact">Contact</a></li>
 
                         <?php if (!isset($_SESSION['g_uid'])) : ?>

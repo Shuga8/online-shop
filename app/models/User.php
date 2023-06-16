@@ -88,4 +88,94 @@ class User
             return false;
         }
     }
+
+    // Category Counts
+
+    public function getMenCategoryCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_category` = :product_category");
+
+        //bind values
+        $this->db->bind(":product_category", "men");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getWomenCategoryCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_category` = :product_category");
+
+        //bind values
+        $this->db->bind(":product_category", "women");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getUnisexCategoryCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_category` = :product_category");
+
+        //bind values
+        $this->db->bind(":product_category", "unisex");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function  getChildrenCategoryCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_category` = :product_category");
+
+        //bind values
+        $this->db->bind(":product_category", "children");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

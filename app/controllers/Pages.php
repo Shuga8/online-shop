@@ -73,4 +73,42 @@ class Pages extends Controller
 
         $this->view('Pages/contact', $data);
     }
+
+    // In here we are going to get all products by pagination without filtering them out by any type of identity
+    public function getAllProductsByPagination()
+    {
+    }
+
+    //category counts
+    public function getMenCategoryCount()
+    {
+
+        $count = $this->userModel->getMenCategoryCount();
+
+        echo $count;
+    }
+
+    public function getWomenCategoryCount()
+    {
+
+        $count = $this->userModel->getWomenCategoryCount();
+
+        echo $count;
+    }
+
+    public function getUnisexCategoryCount()
+    {
+
+        $count = $this->userModel->getUnisexCategoryCount();
+
+        echo $count;
+    }
+
+    public function getChildrenCategoryCount()
+    {
+
+        $count = $this->userModel->getChildrenCategoryCount();
+
+        echo $count;
+    }
 }

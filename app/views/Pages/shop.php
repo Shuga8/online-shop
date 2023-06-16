@@ -52,9 +52,10 @@ include_once APPROOT . "/views/includes/header.php";
             </div>
           </div>
         </div>
-        <div class="row mb-5">
+        <div class="row mb-5" id="clothes-container">
 
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+
+          <!-- <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
             <div class="block-4 text-center border">
               <figure class="block-4-image">
                 <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
@@ -65,142 +66,7 @@ include_once APPROOT . "/views/includes/header.php";
                 <p class="text-primary font-weight-bold">$50</p>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Corater</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Polo Shirt</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">T-Shirt Mockup</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Corater</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Tank Top</a></h3>
-                <p class="mb-0">Finding perfect t-shirt</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Corater</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Polo Shirt</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">T-Shirt Mockup</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Corater</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Tank Top</a></h3>
-                <p class="mb-0">Finding perfect t-shirt</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Polo Shirt</a></h3>
-                <p class="mb-0">Finding perfect products</p>
-                <p class="text-primary font-weight-bold">$50</p>
-              </div>
-            </div>
-          </div>
+          </div> -->
 
 
         </div>
@@ -225,10 +91,10 @@ include_once APPROOT . "/views/includes/header.php";
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Unisex</span> <span class="text-black ml-auto">(3,200)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+            <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto men-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto women-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="#" class="d-flex"><span>Unisex</span> <span class="text-black ml-auto unisex-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
           </ul>
         </div>
 
@@ -242,7 +108,7 @@ include_once APPROOT . "/views/includes/header.php";
           <div class="mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
             <label for="s_sm" class="d-flex">
-              <input type="radio" id="s_sm" class="mr-2 mt-1" name="size"> <span class="text-black">Small (2,319)</span>
+              <input type="radio" id="s_sm" class="mr-2 mt-1" name="size"> <span class="text-black small-span-count">(...)</span>
             </label>
             <label for="s_md" class="d-flex">
               <input type="radio" id="s_md" class="mr-2 mt-1" name="size"> <span class="text-black">Medium (1,282)</span>
@@ -325,7 +191,8 @@ include_once APPROOT . "/views/includes/header.php";
 
 <!--  content ends here -->
 
-
+<!-- Js -->
+<script src="<?= SITE_URL . '/public/js/getProducts.js' ?>" type="module"></script>
 <!-- Footer -->
 <?php
 
