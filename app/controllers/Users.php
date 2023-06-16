@@ -16,14 +16,11 @@ class Users extends Controller
     public function login()
     {
 
-        if (!isset($_SESSION['ucode']) || (isset($_SESSION['ucode']) && empty($_SESSION['ucode']))) {
-            if ($_GET['url'] !== 'login')
-                header('location: ' . SITE_URL . '/login');
+        if (isset($_SESSION['ucode'])) {
+            echo $_SESSION['ucode'];
         } else {
-            if ($_GET['url'] !== 'login')
-                header('location: ' . SITE_URL . '/index');
+            echo "not set";
         }
-
 
         $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
         $clientSecret = "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";
@@ -74,6 +71,7 @@ class Users extends Controller
             }
         }
 
+
         $data = [
             'title' => 'Login',
             'home-class' => '',
@@ -89,6 +87,7 @@ class Users extends Controller
 
     public function auth()
     {
+
         print_r($_SESSION['user_arr']);
         // $data = [
         //     'g_uid' => $_SESSION['user_arr']['id'],
@@ -159,7 +158,8 @@ class Users extends Controller
             'home-class' => '',
             'about-class' => '',
             'shop-class' => '',
-            'cont-class' => ''
+            'cont-class' => '',
+            'login-class' => ''
         ];
 
         $this->view('Users/cart', $data);

@@ -1,12 +1,12 @@
 <footer class="site-footer border-top">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="col-lg-4 mb-5 mb-lg-0">
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="footer-heading mb-4">Navigations</h3>
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <!-- <div class="col-md-6 col-lg-4">
                         <ul class="list-unstyled">
                             <li><a href="#">Sell online</a></li>
                             <li><a href="#">Features</a></li>
@@ -20,17 +20,17 @@
                             <li><a href="#">Dropshipping</a></li>
                             <li><a href="#">Website development</a></li>
                         </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
+                    </div> -->
+                    <div class="col-md-6 col-lg-2">
                         <ul class="list-unstyled">
-                            <li><a href="#">Point of sale</a></li>
-                            <li><a href="#">Hardware</a></li>
-                            <li><a href="#">Software</a></li>
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Women</a></li>
+                            <li><a href="#">Childrem</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 mr-lg-5">
                 <h3 class="footer-heading mb-4">Promo</h3>
                 <a href="#" class="block-6">
                     <img src="<?php echo SITE_URL; ?>/public/images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
