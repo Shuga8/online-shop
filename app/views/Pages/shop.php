@@ -55,22 +55,27 @@ include_once APPROOT . "/views/includes/header.php";
         <div class="row mb-5" id="clothes-container">
 
 
-          <!-- <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
             <div class="block-4 text-center border">
               <figure class="block-4-image">
-                <a href="shop-single.html"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                <a href="<?= SITE_URL ?>"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
               </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="shop-single.html">Tank Top</a></h3>
+              <div class="block-4-text p-2">
+                <h3><a href="<?= SITE_URL ?>">Tank Top</a></h3>
                 <p class="mb-0">Finding perfect t-shirt</p>
-                <p class="text-primary font-weight-bold">$50</p>
+                <p class="text-primary font-weight-bold product-amount">50</p>
+
+                <a href="" id="add-to-cart" class="mb-2 p-2 text-white bg-primary">ADD TO CART<span class="icon icon-shopping_cart"></span></a>
+
+                <div class="clear-fix"></div>
+                <br>
               </div>
             </div>
-          </div> -->
+          </div>
 
 
         </div>
-        <div class="row" data-aos="fade-up">
+        <!-- <div class="row" data-aos="fade-up">
           <div class="col-md-12 text-center">
             <div class="site-block-27">
               <ul>
@@ -84,7 +89,7 @@ include_once APPROOT . "/views/includes/header.php";
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="col-md-3 order-1 mb-5 mb-md-0">
@@ -108,13 +113,17 @@ include_once APPROOT . "/views/includes/header.php";
           <div class="mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
             <label for="s_sm" class="d-flex">
-              <input type="radio" id="s_sm" class="mr-2 mt-1" name="size"> <span class="text-black small-span-count">(...)</span>
+              <input type="radio" id="s_sm" class="mr-2 mt-1" name="size"> <span class="text-black small-span-count">Small (...)</span>
             </label>
             <label for="s_md" class="d-flex">
-              <input type="radio" id="s_md" class="mr-2 mt-1" name="size"> <span class="text-black">Medium (1,282)</span>
+              <input type="radio" id="s_md" class="mr-2 mt-1" name="size"> <span class="text-black medium-span-count">Medium (...)</span>
             </label>
             <label for="s_lg" class="d-flex">
-              <input type="radio" id="s_lg" class="mr-2 mt-1" name="size"> <span class="text-black">Large (1,392)</span>
+              <input type="radio" id="s_lg" class="mr-2 mt-1" name="size"> <span class="text-black large-span-count">Large (...)</span>
+            </label>
+
+            <label for="s_xlg" class="d-flex">
+              <input type="radio" id="s_xlg" class="mr-2 mt-1" name="size"> <span class="text-black xtra-large-span-count">Xtra Large (...)</span>
             </label>
           </div>
 
