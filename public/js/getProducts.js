@@ -111,6 +111,110 @@ async function getChildrenProductCount() {
 
 // By size
 
-let getProductAmountBySize = setInterval(() => {}, 500);
+const smallSpanCount = document.querySelector(".small-span-count"),
+  mediumSpanCount = document.querySelector(".medium-span-count"),
+  largeSpanCount = document.querySelector(".large-span-count"),
+  xtraLargeSpanCount = document.querySelector(".xtra-large-span-count");
 
-async function getSmallProductsCount() {}
+let getProductAmountBySize = setInterval(() => {
+  getSmallProductsCount();
+  getMediumProductsCount();
+  getLargeProductsCount();
+  getExtraLargeProductsCount();
+}, 500);
+
+async function getSmallProductsCount() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `${SITE_URL}/pages/getSmallProductsCount`, true);
+
+  try {
+    xhr.onload = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        let data = xhr.responseText;
+
+        if (data == "") {
+          smallSpanCount.textContent = `Small (0)`;
+        } else {
+          smallSpanCount.textContent = `Small (${data})`;
+        }
+      }
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  xhr.send();
+}
+
+async function getMediumProductsCount() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `${SITE_URL}/pages/getMediumProductsCount`, true);
+
+  try {
+    xhr.onload = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        let data = xhr.responseText;
+
+        if (data == "") {
+          mediumSpanCount.textContent = `Medium (0)`;
+        } else {
+          mediumSpanCount.textContent = `Medium (${data})`;
+        }
+      }
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  xhr.send();
+}
+
+async function getLargeProductsCount() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `${SITE_URL}/pages/getLargeProductsCount`, true);
+
+  try {
+    xhr.onload = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        let data = xhr.responseText;
+
+        if (data == "") {
+          largeSpanCount.textContent = `Large (0)`;
+        } else {
+          largeSpanCount.textContent = `Large (${data})`;
+        }
+      }
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  xhr.send();
+}
+
+async function getExtraLargeProductsCount() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `${SITE_URL}/pages/getExtraLargeProductsCount`, true);
+
+  try {
+    xhr.onload = function () {
+      if (xhr.status == 200 && xhr.readyState == 4) {
+        let data = xhr.responseText;
+
+        if (data == "") {
+          xtraLargeSpanCount.textContent = `Xtra Large (0)`;
+        } else {
+          xtraLargeSpanCount.textContent = `Xtra Large (${data})`;
+        }
+      }
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  xhr.send();
+}

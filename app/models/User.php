@@ -178,4 +178,92 @@ class User
             return false;
         }
     }
+
+    public function getSmallProductsCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_size` = :product_size");
+
+        //bind values
+        $this->db->bind(":product_size", "small");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getMediumProductsCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_size` = :product_size");
+
+        //bind values
+        $this->db->bind(":product_size", "medium");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getLargeProductsCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_size` = :product_size");
+
+        //bind values
+        $this->db->bind(":product_size", "large");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getExtraLargeProductsCount()
+    {
+
+        $this->db->query("SELECT COUNT(*) as 
+        product_count FROM `products` WHERE `product_size` = :product_size");
+
+        //bind values
+        $this->db->bind(":product_size", "extra large");
+
+        //execute query
+
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->product_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
