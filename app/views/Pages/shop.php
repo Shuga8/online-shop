@@ -52,27 +52,46 @@ include_once APPROOT . "/views/includes/header.php";
             </div>
           </div>
         </div>
+
+        <style>
+          .item-container {}
+
+          @media(max-width: 450px) {
+            .item {
+              margin: 0px auto !important;
+            }
+          }
+        </style>
         <div class="row mb-5" id="clothes-container">
 
+          <div class="item-container" style="inline-size: clamp(100%);display: flex;gap:2rem;flex-wrap: wrap;">
 
-          <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-            <div class="block-4 text-center border">
-              <figure class="block-4-image">
-                <a href="<?= SITE_URL ?>"><img src="<?php echo SITE_URL;  ?>/public/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-              </figure>
-              <div class="block-4-text p-2">
-                <h3><a href="<?= SITE_URL ?>">Tank Top</a></h3>
-                <p class="mb-0">Finding perfect t-shirt</p>
-                <p class="text-primary font-weight-bold product-amount">50</p>
+            <div class="item" style="inline-size: clamp(300px, 300px, 250px);block-size: 350px;background: #ddd;">
 
-                <a href="" id="add-to-cart" class="mb-2 p-2 text-white bg-primary">ADD TO CART<span class="icon icon-shopping_cart"></span></a>
-
-                <div class="clear-fix"></div>
-                <br>
-              </div>
             </div>
+
+
           </div>
 
+          <!-- <?php foreach ($data['products'] as $product) : ?>
+
+            <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+              <div class="block-4 text-center border">
+                <a href="<?= SITE_URL ?>"><img src="<?php echo SITE_URL;  ?>/public/extras/<?php echo $product->product_image; ?>" alt="Image placeholder" class="img-fluid"></a>
+                <div class="block-4-text p-2">
+                  <h3><a href="<?= SITE_URL ?>"><?php echo $product->product_name; ?></a></h3>
+                  <p class="mb-0"><?php echo $product->product_caption; ?></p>
+                  <p class="text-primary font-weight-bold product-amount">50</p>
+
+                  <a href="" id="add-to-cart" class="mb-2 p-2 text-white bg-primary">ADD TO CART<span class="icon icon-shopping_cart"></span></a>
+
+                  <div class="clear-fix"></div>
+                  <br>
+                </div>
+              </div>
+            </div>
+
+          <?php endforeach; ?> -->
 
         </div>
         <!-- <div class="row" data-aos="fade-up">

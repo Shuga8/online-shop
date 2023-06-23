@@ -91,13 +91,28 @@ class Pages extends Controller
             exit(0);
         }
 
+        //get all products from db by pagination
+
+        $message = "";
+
+        $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
+
+        if ($products == "No products found") {
+            $message = "No products found";
+        } elseif ($products == false) {
+            $message = "An error Occured please try again !";
+        } else {
+            $message = "ok";
+        }
+
         $data = [
             'title' => 'Shop Page',
             'home-class' => '',
             'about-class' => '',
             'shop-class' => 'active',
             'cont-class' => '',
-            'login-class' => ''
+            'login-class' => '',
+            'products' => $products
         ];
 
         $this->view('Pages/shop', $data);
