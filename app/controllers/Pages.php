@@ -112,7 +112,8 @@ class Pages extends Controller
             'shop-class' => 'active',
             'cont-class' => '',
             'login-class' => '',
-            'products' => $products
+            'products' => $products,
+            ''
         ];
 
         $this->view('Pages/shop', $data);

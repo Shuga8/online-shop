@@ -54,8 +54,89 @@ include_once APPROOT . "/views/includes/header.php";
         </div>
 
         <style>
-          .item-container {}
+          * {
+            transition: .3s ease-in-out;
+          }
 
+          .item-container {
+            inline-size: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+          }
+
+          .item-container .item {
+            block-size: 350px;
+            box-shadow: 5px 5px 7px #ccc, 0px 2px 7px #ccc;
+            border-radius: 7px;
+            display: block;
+          }
+
+          .item .image {
+            inline-size: 100%;
+            block-size: 55%;
+            overflow: hidden;
+            border-radius: 7px 7px 0px 0px;
+          }
+
+          .item .image img {
+            display: block;
+            inline-size: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7px 7px 0px 0px;
+            background: #fff;
+            backdrop-filter: hue(255, 255, 255);
+          }
+
+          .item .image img:hover {
+            border-radius: 7px 7px 0px 0px;
+            transform: scale(1.2);
+          }
+
+          .item .details .name {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: capitalize;
+            margin-block-start: 3px !important;
+          }
+
+          .item .details .name i {
+            font-size: .7rem !important;
+          }
+
+          .item .details .caption {
+            margin-block-start: -15px;
+            text-align: center;
+            font-size: .85rem;
+          }
+
+          .item .details .amount {
+            text-align: center;
+            color: #111;
+            font-size: 1.15rem;
+            font-weight: 650;
+            margin-bottom: 10px;
+          }
+
+          .item .details .last {
+            text-align: center;
+            margin-top: 5px;
+          }
+
+          .item .details .last a {
+            padding: .5rem;
+            background-color: #766EEA;
+            color: #fff;
+            border-radius: 3px;
+          }
+
+          .item .details .last a:hover {
+            background-color: #766EEAaf;
+          }
+
+          /* Media query */
           @media(max-width: 450px) {
             .item {
               margin: 0px auto !important;
@@ -64,51 +145,48 @@ include_once APPROOT . "/views/includes/header.php";
         </style>
         <div class="row mb-5" id="clothes-container">
 
-          <div class="item-container" style="inline-size: clamp(100%);display: flex;gap:2rem;flex-wrap: wrap;">
+          <div class="item-container">
 
-            <div class="item" style="inline-size: clamp(300px, 300px, 250px);block-size: 350px;background: #ddd;">
+            <?php foreach ($data['products'] as $product) : ?>
 
-            </div>
+              <div class="item">
 
+                <div class="image">
 
-          </div>
+                  <a href="">
+                    <img src="<?php echo SITE_URL; ?>/public/extras/<?php echo $product->product_image; ?>" alt="Product ID">
+                  </a>
+                </div>
 
-          <!-- <?php foreach ($data['products'] as $product) : ?>
+                <div class="details">
 
-            <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-              <div class="block-4 text-center border">
-                <a href="<?= SITE_URL ?>"><img src="<?php echo SITE_URL;  ?>/public/extras/<?php echo $product->product_image; ?>" alt="Image placeholder" class="img-fluid"></a>
-                <div class="block-4-text p-2">
-                  <h3><a href="<?= SITE_URL ?>"><?php echo $product->product_name; ?></a></h3>
-                  <p class="mb-0"><?php echo $product->product_caption; ?></p>
-                  <p class="text-primary font-weight-bold product-amount">50</p>
+                  <p class="name"><a href=""><?php echo $product->product_name; ?> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
 
-                  <a href="" id="add-to-cart" class="mb-2 p-2 text-white bg-primary">ADD TO CART<span class="icon icon-shopping_cart"></span></a>
+                  <div class="caption"><?php echo $product->product_caption; ?></div>
 
-                  <div class="clear-fix"></div>
-                  <br>
+                  <div class="amount">
+                    <?php echo $product->product_price; ?>
+                  </div>
+
+                  <div class="last">
+                    <a href="">ADD <i class="fas fa-cart-plus"></i></a>
+                  </div>
+
                 </div>
               </div>
-            </div>
 
-          <?php endforeach; ?> -->
+
+
+            <?php endforeach; ?>
+
+          </div>
+
+          <div class="container m-5">
+
+          </div>
 
         </div>
-        <!-- <div class="row" data-aos="fade-up">
-          <div class="col-md-12 text-center">
-            <div class="site-block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
+
       </div>
 
       <div class="col-md-3 order-1 mb-5 mb-md-0">
@@ -221,6 +299,25 @@ include_once APPROOT . "/views/includes/header.php";
 
 <!-- Js -->
 <script src="<?= SITE_URL . '/public/js/getProducts.js' ?>" type="module"></script>
+<script>
+  let balances = document.querySelectorAll(".amount");
+
+  balances.forEach(Oldbalance => {
+    let balance = Oldbalance.textContent;
+
+    balance = parseInt(balance);
+
+    balance =
+      balance == 0 || balance == null || typeof balance != "number" ? 0 : balance;
+
+    balance = balance.toLocaleString("en-NG", {
+      style: "currency",
+      currency: "NGN",
+    });
+
+    Oldbalance.textContent = balance;
+  });
+</script>
 <!-- Footer -->
 <?php
 
