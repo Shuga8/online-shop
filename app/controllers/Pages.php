@@ -138,7 +138,7 @@ class Pages extends Controller
     {
         if (!isset($_SESSION['g_uid'])) {
             http_response_code(403);
-            $_SESSION['flash-message'] = "You are not signed in, please sign in first !!!";
+            $_SESSION['flash-message'] = "You are not signed in, please sign in first";
             header("Location:" . SITE_URL . "/pages/shop");
             exit(0);
         }
@@ -173,7 +173,7 @@ class Pages extends Controller
                 'p_name' => $product->product_name,
                 'p_price' => $product->product_price,
                 'p_quantity' => $quantity,
-                'p_discount' => 0,
+                'p_discount' => $product->product_discount,
                 'p_size' => $product->product_size
             ];
 
@@ -260,5 +260,16 @@ class Pages extends Controller
         $count = $this->userModel->getExtraLargeProductsCount();
 
         echo $count;
+    }
+    // cart amount
+    public function get_cart_items_count()
+    {
+
+        $count = $this->userModel->get_cart_items_count($_SESSION['g_uid']);
+        if (!$count) {
+            echo 0;
+        } else {
+            echo $count;
+        }
     }
 }

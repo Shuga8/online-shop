@@ -5,13 +5,13 @@
         top: 10px;
         left: 50%;
         transform: translateX(-50%);
-        background: #eee;
+        background: #0016ff;
         box-shadow: 2px 5px 10px #bbb;
-        color: #0016ff;
+        color: #fff;
         inline-size: 280px;
         min-block-size: 50px;
         padding: .2rem;
-        border-radius: 5px;
+        border-radius: 0px;
         display: flex;
         justify-content: center;
         align-items: center;

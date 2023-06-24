@@ -290,4 +290,24 @@ class User
             return false;
         }
     }
+
+    public function get_cart_items_count($uid)
+    {
+        // query to get cart items count from db
+        $this->db->query("SELECT COUNT(*) as items_count FROM `cart` WHERE `user_id` = :u_id");
+
+        // bind params
+        $this->db->bind(":u_id", $uid);
+
+        // execute query
+        if ($this->db->execute()) {
+            if ($count = $this->db->single()->items_count) {
+                return $count;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

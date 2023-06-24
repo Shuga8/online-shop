@@ -157,7 +157,7 @@ class Users extends Controller
                 $_SESSION['g_email'] = $user->email;
                 $_SESSION['g_img'] = $user->user_image;
 
-                $_SESSION['flash-message'] = "<span style='text-transform: uppercase'>Welcome back " . $_SESSION['g_fname'] . "</span>";
+                $_SESSION['flash-message'] = "<span style='text-transform: capitalize'>Welcome back " . $_SESSION['g_fname'] . "</span>";
 
                 header('Location: ' . SITE_URL . '/index');
                 exit(0);
