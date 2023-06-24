@@ -135,6 +135,7 @@ class Users extends Controller
                     $_SESSION['g_img'] = $user->user_image;
 
                     header('Location: ' . SITE_URL . '/index');
+                    $_SESSION['flash-message'] = "You have successfully logged in";
                     exit(0);
                 }
             }
@@ -155,6 +156,8 @@ class Users extends Controller
                 $_SESSION['g_lname'] = $user->lastname;
                 $_SESSION['g_email'] = $user->email;
                 $_SESSION['g_img'] = $user->user_image;
+
+                $_SESSION['flash-message'] = "Welcome back " . $_SESSION['g_fname'];
 
                 header('Location: ' . SITE_URL . '/index');
                 exit(0);

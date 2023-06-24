@@ -111,3 +111,10 @@
                 </div>
             </nav>
         </header>
+
+        <!-- Flash message -->
+        <?php
+
+        include_once APPROOT . "/views/components/flash-message.php";
+
+        ?>

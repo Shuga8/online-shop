@@ -134,6 +134,44 @@ class Pages extends Controller
         $this->view('Pages/contact', $data);
     }
 
+    public function add_to_cart()
+    {
+        if (!isset($_SESSION['g_uid'])) {
+            http_response_code(403);
+            $_SESSION['flash-message'] = "You are not signed in, please sign in first !!!";
+            header("Location:" . SITE_URL . "/pages/shop");
+            exit(0);
+        }
+
+        $url = $_GET['url'];
+
+        $url = explode('/', $url);
+
+        $id = $url[2];
+
+        if (!preg_match('/^[0-9]{1,}$/', $id)) {
+            http_response_code(403);
+            $_SESSION['flash-message'] = "Item not found";
+            header("Location:" . SITE_URL . "/pages/shop");
+            exit(0);
+        }
+
+        $product = $this->adminModel->get_product_by_id($id);
+
+        if (!$product) {
+            $_SESSION['flash-message'] = "Product does not exists";
+            header("Location:" . SITE_URL . "/pages/shop");
+            exit(0);
+        } else {
+
+            print_r($product);
+
+            $cart_items = [
+                'id' => $product->id
+            ];
+        }
+    }
+
     // In here we are going to get all products by pagination without filtering them out by any type of identity
     public function getAllProductsByPagination()
     {

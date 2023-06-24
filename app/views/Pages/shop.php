@@ -5,6 +5,8 @@ include_once APPROOT . "/views/includes/header.php";
 
 ?>
 
+
+
 <!-- content -->
 
 <div class="bg-light py-3">
@@ -169,7 +171,9 @@ include_once APPROOT . "/views/includes/header.php";
                   </div>
 
                   <div class="last">
-                    <a href="">ADD <i class="fas fa-cart-plus"></i></a>
+
+                    <a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $product->id; ?>">ADD <i class="fas fa-cart-plus"></i></a>
+
                   </div>
 
                 </div>

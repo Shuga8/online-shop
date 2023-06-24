@@ -212,4 +212,25 @@ class Admin
             return false;
         }
     }
+
+    public function get_product_by_id($id)
+    {
+        // query to get product info by products id
+        $this->db->query("SELECT * FROM `products` WHERE `id` = :p_id");
+
+        // bind query
+        $this->db->bind(":p_id", $id);
+
+        // execute query
+        $this->db->execute();
+
+        // check row count
+        if ($this->db->rowCount() > 0) {
+            $row = $this->db->single();
+
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
