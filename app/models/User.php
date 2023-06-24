@@ -266,4 +266,28 @@ class User
             return false;
         }
     }
+
+    // Add to cart
+    public function add_to_cart($cart)
+    {
+
+        // query to insert into cart
+        $this->db->query("INSERT INTO `cart`(`user_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`) VALUES(:u_id, :p_img, :p_name, :p_price, :p_quantity, :p_size, :p_total)");
+
+        // bind values in order
+        $this->db->bind(':u_id', $cart['user_id']);
+        $this->db->bind(':p_img', $cart['p_img']);
+        $this->db->bind(':p_name', $cart['p_name']);
+        $this->db->bind(':p_price', $cart['p_price']);
+        $this->db->bind(':p_quantity', $cart['p_quantity']);
+        $this->db->bind(':p_size', $cart['p_size']);
+        $this->db->bind(':p_total', $cart['p_total']);
+
+        // execute query
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

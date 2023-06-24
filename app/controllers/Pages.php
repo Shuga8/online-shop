@@ -164,11 +164,30 @@ class Pages extends Controller
             exit(0);
         } else {
 
-            print_r($product);
+            $quantity = 1;
 
-            $cart_items = [
-                'id' => $product->id
+            $cart_upload = [
+                'user_id' => $_SESSION['g_uid'],
+                'id' => $product->id,
+                'p_img' => $product->product_image,
+                'p_name' => $product->product_name,
+                'p_price' => $product->product_price,
+                'p_quantity' => $quantity,
+                'p_discount' => 0,
+                'p_size' => $product->product_size
             ];
+
+            // $product->product_discount
+            $cart_upload['p_total'] = ($cart_upload['p_price'] - ($cart_upload['p_price'] * $cart_upload['p_discount'] / 100)) * $cart_upload['p_quantity'];
+
+            // add cart
+            $add_to_cart = $this->userModel->add_to_cart($cart_upload);
+
+            if ($add_to_cart) {
+                $_SESSION['flash-message'] = "Product added to cart successfully!!!";
+                header("Location:" . SITE_URL . "/pages/shop");
+                exit(0);
+            }
         }
     }
 
