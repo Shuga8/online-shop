@@ -203,6 +203,14 @@ class Users extends Controller
             exit(0);
         }
         $cart = $this->userModel->getCart($_SESSION['g_uid']);
+        $count = $this->userModel->get_cart_items_count($_SESSION['g_uid']);
+        $cartCount = 0;
+
+        if (!$count) {
+            $cartCount = 0;
+        } else {
+            $cartCount = $count;
+        }
         $data = [
             'title' => 'Cart',
             'home-class' => '',
@@ -210,7 +218,8 @@ class Users extends Controller
             'shop-class' => '',
             'cont-class' => '',
             'login-class' => '',
-            'cart' => $cart
+            'cart' => $cart,
+            'count' => $cartCount
         ];
 
         $this->view('Users/cart', $data);
