@@ -139,9 +139,32 @@ include_once APPROOT . "/views/includes/header.php";
           }
 
           /* Media query */
-          @media(max-width: 450px) {
+
+          @media screen and (min-width: 650px) and (max-width: 915px) {
+
+            .item-container {
+              inline-size: 100%;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 2rem;
+            }
+
+          }
+
+          @media(max-width: 650px) {
+            .item-container {
+              display: flex;
+              flex-wrap: wrap;
+            }
+
             .item {
-              margin: 0px auto !important;
+              margin-inline: auto !important;
+              inline-size: 80%;
+              block-size: 450px !important;
+            }
+
+            .item .image {
+              block-size: 65%;
             }
           }
         </style>

@@ -267,7 +267,7 @@ class User
         }
     }
 
-    // Add to cart
+    // Cart
     public function add_to_cart($cart)
     {
 
@@ -305,6 +305,23 @@ class User
                 return $count;
             } else {
                 return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getCart($uid)
+    {
+        $this->db->query("SELECT * FROM `cart` WHERE `user_id` = :u_id");
+
+        $this->db->bind(":u_id", $uid);
+
+        $this->db->execute();
+
+        if ($this->db->rowCount() > 0) {
+            if ($row = $this->db->resultSet()) {
+                return $row;
             }
         } else {
             return false;

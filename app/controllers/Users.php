@@ -195,13 +195,22 @@ class Users extends Controller
 
     public function cart()
     {
+
+        if (!isset($_SESSION['g_uid'])) {
+            http_response_code(403);
+            $_SESSION['flash-message'] =  "Please login first !!!";
+            header("Location: " . SITE_URL . "/login");
+            exit(0);
+        }
+        $cart = $this->userModel->getCart($_SESSION['g_uid']);
         $data = [
             'title' => 'Cart',
             'home-class' => '',
             'about-class' => '',
             'shop-class' => '',
             'cont-class' => '',
-            'login-class' => ''
+            'login-class' => '',
+            'cart' => $cart
         ];
 
         $this->view('Users/cart', $data);

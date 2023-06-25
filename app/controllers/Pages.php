@@ -261,15 +261,24 @@ class Pages extends Controller
 
         echo $count;
     }
+
     // cart amount
     public function get_cart_items_count()
     {
 
+        if (!isset($_SESSION['g_uid'])) {
+            echo 0;
+            exit(0);
+        }
+
         $count = $this->userModel->get_cart_items_count($_SESSION['g_uid']);
+
         if (!$count) {
             echo 0;
+            exit(0);
         } else {
             echo $count;
+            exit(0);
         }
     }
 }

@@ -88,7 +88,7 @@
 <script src="<?php echo SITE_URL; ?>/public/js/aos.js"></script>
 
 <script src="<?php echo SITE_URL; ?>/public/js/main.js"></script>
-
+<script src="<?php echo SITE_URL; ?>/public/js/fetch_cart_amount.js" type="module"></script>
 </body>
 
 </html>
