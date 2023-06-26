@@ -327,4 +327,19 @@ class User
             return false;
         }
     }
+
+    public function getCartById($id)
+    {
+        $this->db->query("SELECT * FROM `cart` WHERE `id` = :id");
+
+        $this->db->bind(":id", $id);
+
+        $this->db->execute();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

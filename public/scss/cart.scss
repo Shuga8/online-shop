@@ -17,7 +17,7 @@
   .cart-field {
     margin-block: 20px;
     inline-size: clamp(350px, 68%, 1000px);
-    box-shadow: 5px 3px 7px #bbb;
+    box-shadow: 5px 3px 7px #bbb, -3px 5px 7px #bbb;
     border-radius: 3px;
     min-block-size: 500px;
 
@@ -85,12 +85,20 @@
 
             &:nth-child(1)::before {
               content: "Remove";
-              color: red;
+            }
+
+            &:nth-child(1) {
+              color: #fff;
+              background: #ff4646;
             }
 
             &:nth-child(2)::before {
               content: "Edit";
-              color: green;
+            }
+
+            &:nth-child(2) {
+              color: #fff;
+              background: #46ff46;
             }
           }
         }
@@ -171,6 +179,46 @@
         &:hover {
           transition: 0.3s ease-in-out;
           background: #ff7b0092;
+        }
+      }
+    }
+  }
+}
+
+// Page counter
+.page-counter-container {
+  inline-size: 100%;
+  padding: 1rem;
+  border-top: solid 2px #2a76f9;
+  margin: 30px 0px;
+
+  strong {
+    color: #2a76f9;
+    margin: 3px;
+  }
+
+  ul {
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+
+    li {
+      padding: 6px 10px;
+      border: 0.09rem solid #2a76f9;
+      color: #ccc;
+
+      a {
+        text-decoration: none;
+        color: #2a76f9;
+      }
+
+      &.active {
+        background: #2a76f9;
+        color: #fff;
+
+        a {
+          color: #fff;
         }
       }
     }

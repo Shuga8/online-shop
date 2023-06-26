@@ -113,7 +113,11 @@ class Pages extends Controller
             'cont-class' => '',
             'login-class' => '',
             'products' => $products,
-            ''
+            'page' => $page,
+            'previous' => $previous_page,
+            'next' => $next_page,
+            'message' => $message,
+            'total_num_of_pages' => $total_number_of_pages
         ];
 
         $this->view('Pages/shop', $data);
@@ -279,6 +283,36 @@ class Pages extends Controller
         } else {
             echo $count;
             exit(0);
+        }
+    }
+
+    // Delete cart item
+    public function delete()
+    {
+
+        $url = $_GET['url'];
+
+        $url = explode("/", $url);
+
+        $id = $url[2];
+
+        if (!isset($id) || empty($id)) {
+            http_response_code(403);
+            $_SESSION['flash-message'] = "Access Forbidden";
+            header("Location:" . SITE_URL . "/cart");
+            exit(0);
+        } else {
+            // Check if the product id is in the database
+            $checkIfCartItemExists = $this->userModel->getCartById($id);
+
+            if (!$checkIfCartItemExists) {
+                http_response_code(403);
+                $_SESSION['flash-message'] = "Error! Access denied";
+                header("Location:" . SITE_URL . "/cart");
+                exit(0);
+            } else {
+                echo "Continue";
+            }
         }
     }
 }

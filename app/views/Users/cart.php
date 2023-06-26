@@ -32,7 +32,7 @@ include_once APPROOT . "/views/includes/header.php";
 
 
           <div class="actions">
-            <a href=""></a>
+            <a href="<?= SITE_URL; ?>/pages/delete/<?= $cart->id; ?>"></a>
             <a href=""></a>
           </div>
         </div>
@@ -47,10 +47,27 @@ include_once APPROOT . "/views/includes/header.php";
   <div class="cart-summary">
     <h3>Summary</h3>
 
+    <?php
+
+    $sub = 0;
+    $total = 0;
+
+    foreach ($data['cart'] as $cart) {
+      foreach ($cart as $key => $value) {
+        if ($key == 'product_total') {
+          $sub += $value;
+          $total += $value;
+        }
+      }
+    }
+
+    $total += 3200;
+    ?>
+
     <div class="details">
       <div class="flex-div">
         <h5>Subtotal</h5>
-        <p class="amount">10000</p>
+        <p class="amount"><?= $sub ?></p>
       </div>
 
       <div class="flex-div">
@@ -65,7 +82,7 @@ include_once APPROOT . "/views/includes/header.php";
 
       <div class="total">
         <h5>Total</h5>
-        <p class="amount total">13200</p>
+        <p class="amount total"><?= $total ?></p>
       </div>
 
     </div>
