@@ -356,6 +356,16 @@ class User
     }
 
     public function add_cart_item_quantity($id, $quantity = 1){
-        $this->db->query("UPDATE `cart` SET `product_quantity` = `product_quantity` + 1 WHERE `id` = 1");
+        $this->db->query("UPDATE `cart` SET `product_quantity` = `product_quantity` + :quantity WHERE `id` = :id");
+
+        $this->db->bind(":quantity", $quantity);
+        $this->db->bind(":id", $id);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

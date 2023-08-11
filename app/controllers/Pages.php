@@ -170,9 +170,12 @@ class Pages extends Controller
 
             // check if product already exists
             if($this->userModel->getCartById($id)){
-                $_SESSION['flash-message'] = "Already Exists";
-                header("Location:" . SITE_URL . "/pages/shop");
-            exit(0);
+
+                if($this->userModel->add_cart_item_quantity($id)){
+                    $_SESSION['flash-message'] = "Updated item quantity in cart";
+                    header("Location:" . SITE_URL . "/pages/shop");
+                    exit(0);
+                }
             }
 
             $quantity = 1;
