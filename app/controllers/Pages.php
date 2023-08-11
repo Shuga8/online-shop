@@ -168,6 +168,13 @@ class Pages extends Controller
             exit(0);
         } else {
 
+            // check if product already exists
+            if($this->userModel->getCartById($id)){
+                $_SESSION['flash-message'] = "Already Exists";
+                header("Location:" . SITE_URL . "/pages/shop");
+            exit(0);
+            }
+
             $quantity = 1;
 
             $cart_upload = [
@@ -311,7 +318,17 @@ class Pages extends Controller
                 header("Location:" . SITE_URL . "/cart");
                 exit(0);
             } else {
-                echo "Continue";
+               if($this->userModel->delete_from_cart_by_id($id)){
+                    $_SESSION['flash-message'] = "Successfully deleted item from cart";
+                    header("Location:" . SITE_URL . "/cart");
+                    exit(0);
+               }else{
+
+                $_SESSION['flash-message'] = "Error!";
+                header("Location:" . SITE_URL . "/cart");
+                exit(0);
+                
+               }
             }
         }
     }

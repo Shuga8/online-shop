@@ -342,4 +342,20 @@ class User
             return false;
         }
     }
+
+    public function delete_from_cart_by_id($id){
+        $this->db->query("DELETE FROM `cart` WHERE `id` = :id");
+
+        $this->db->bind(":id", $id);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function add_cart_item_quantity($id, $quantity = 1){
+        $this->db->query("UPDATE `cart` SET `product_quantity` = `product_quantity` + 1 WHERE `id` = 1");
+    }
 }

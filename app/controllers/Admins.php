@@ -215,7 +215,7 @@ class Admins extends Controller
         $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
 
 
-       /*  
+        
         
 
 
@@ -226,18 +226,18 @@ class Admins extends Controller
         } else {
             $message = "ok";
         }
- */
+
 
 
 
         $data = [
             'title' => 'Manage',
             'page' => $page,
-            /* 'products' => $products,
+            'products' => $products,
             'previous' => $previous_page,
             'next' => $next_page,
             'message' => $message,
-            'total_num_of_pages' => $total_number_of_pages */
+            'total_num_of_pages' => $total_number_of_pages
         ];
 
         $this->view("Admin/manage_products", $data);
