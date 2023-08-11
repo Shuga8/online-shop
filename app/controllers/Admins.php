@@ -187,10 +187,10 @@ class Admins extends Controller
         $previous_page = $page - 1;
         $next_page = $page + 1;
         $adjacents = 2;
-
         //Get total amout of products 
         $total_items = $this->adminModel->get_total_number_of_products();
 
+        
         //check items errors
         if ($total_items == false) {
             $total_items = 0;
@@ -204,7 +204,7 @@ class Admins extends Controller
         $second_last = $total_number_of_pages - 1;
 
         //check if page number passed in the url is greater than the total number of page then redirect
-        if ($page > $total_number_of_pages) {
+        if ($page > $total_number_of_pages && $total_number_of_pages != 0) {
             header("Location: " . SITE_URL . "/Admins/manage/?page=$total_number_of_pages");
             exit(0);
         }
@@ -214,6 +214,11 @@ class Admins extends Controller
         //get all products from db by pagination
         $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
 
+
+       /*  
+        
+
+
         if ($products == "No products found") {
             $message = "No products found";
         } elseif ($products == false) {
@@ -221,18 +226,18 @@ class Admins extends Controller
         } else {
             $message = "ok";
         }
-
+ */
 
 
 
         $data = [
             'title' => 'Manage',
             'page' => $page,
-            'products' => $products,
+            /* 'products' => $products,
             'previous' => $previous_page,
             'next' => $next_page,
             'message' => $message,
-            'total_num_of_pages' => $total_number_of_pages
+            'total_num_of_pages' => $total_number_of_pages */
         ];
 
         $this->view("Admin/manage_products", $data);

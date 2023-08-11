@@ -86,7 +86,7 @@ class Pages extends Controller
         $second_last = $total_number_of_pages - 1;
 
         //check if page number passed in the url is greater than the total number of page then redirect
-        if ($page > $total_number_of_pages) {
+        if ($page > $total_number_of_pages && $total_number_of_pages != 0) {
             header("Location: " . SITE_URL . "/pages/shop/?page=$total_number_of_pages");
             exit(0);
         }

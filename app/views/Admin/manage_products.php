@@ -12,7 +12,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
 
     <div class="products-container">
 
-        <div class="products">
+        <!-- <div class="products">
 
             <?php if ($data['message'] == "ok") :  ?>
 
@@ -73,7 +73,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
                         <a href="<?php echo SITE_URL; ?>/admins/manage/?page=<?php echo $data['next']; ?>">Next</a>
                     <?php endif; ?>
                 </li>
-        </div>
+        </div> -->
 
     </div>
 
