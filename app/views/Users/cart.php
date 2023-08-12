@@ -52,15 +52,12 @@ include_once APPROOT . "/views/includes/header.php";
     $sub = 0;
     $total = 0;
 
-    foreach ($data['cart'] as $cart) {
-      foreach ($cart as $key => $value) {
-        if ($key == 'product_total') {
-          $sub += $value;
-          $total += $value;
-        }
-      }
-    }
 
+
+    foreach ($data['cart'] as $cart) {
+      $total += $cart->product_total * $cart->product_quantity;
+      $sub += $cart->product_total * $cart->product_quantity;
+    }
     $total += 3200;
     ?>
 
@@ -88,7 +85,7 @@ include_once APPROOT . "/views/includes/header.php";
     </div>
 
     <form action="" method="POST">
-      <input type="hidden" name="total_price" value="13200">
+      <input type="hidden" name="total_price" value="<?= $total ?>">
       <button type="submit" id="checkout-btn">Proceed to Checkout</button>
     </form>
   </div>
