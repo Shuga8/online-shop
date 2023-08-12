@@ -83,7 +83,7 @@ include_once APPROOT . "/views/includes/header.php";
 
           .item .image img {
             display: block;
-            inline-size: 100%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 7px 7px 0px 0px;
@@ -169,6 +169,9 @@ include_once APPROOT . "/views/includes/header.php";
           }
         </style>
         <div class="row mb-5" id="clothes-container">
+        
+
+        <?php if($data['message'] != "No products found"): ?>
 
           <div class="item-container">
 
@@ -195,7 +198,7 @@ include_once APPROOT . "/views/includes/header.php";
 
                   <div class="last">
 
-                    <a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $product->id; ?>">ADD <i class="fas fa-cart-plus"></i></a>
+                    <a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $product->id . '/' . $product->product_name; ?>">ADD <i class="fas fa-cart-plus"></i></a>
 
                   </div>
 
@@ -243,7 +246,15 @@ include_once APPROOT . "/views/includes/header.php";
               </li>
           </div>
 
+        <?php else : ?>
+          <div class="container my-5 text-center text-danger">
+            No products to shop from !!!
+          </div>
+        <?php endif; ?>
+
         </div>
+
+        
 
       </div>
 

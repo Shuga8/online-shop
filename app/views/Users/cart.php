@@ -15,6 +15,8 @@ include_once APPROOT . "/views/includes/header.php";
   </div>
 </div>
 <div class="cart-container">
+
+<?php if($data['count'] != 0):  ?>
   <div class="cart-field">
     <div class="head">
       Your Cart(<?= $data['count']; ?>)
@@ -89,6 +91,11 @@ include_once APPROOT . "/views/includes/header.php";
       <button type="submit" id="checkout-btn">Proceed to Checkout</button>
     </form>
   </div>
+<?php else: ?>
+  <div class="container text-center my-5 text-danger">
+    No product in your cart!
+  </div>
+<?php endif; ?>
 </div>
 
 <!--  content ends here -->

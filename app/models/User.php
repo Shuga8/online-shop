@@ -272,10 +272,11 @@ class User
     {
 
         // query to insert into cart
-        $this->db->query("INSERT INTO `cart`(`user_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`) VALUES(:u_id, :p_img, :p_name, :p_price, :p_quantity, :p_size, :p_total)");
+        $this->db->query("INSERT INTO `cart`(`user_id`, `product_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`) VALUES(:u_id, :p_id, :p_img, :p_name, :p_price, :p_quantity, :p_size, :p_total)");
 
         // bind values in order
         $this->db->bind(':u_id', $cart['user_id']);
+        $this->db->bind(':p_id', $cart['p_id']);
         $this->db->bind(':p_img', $cart['p_img']);
         $this->db->bind(':p_name', $cart['p_name']);
         $this->db->bind(':p_price', $cart['p_price']);
@@ -290,6 +291,22 @@ class User
             return false;
         }
     }
+
+    public function getCartItemByName($owner, $product){
+        $this->db->query("SELECT * FROM `cart` WHERE `user_id` = :u_id AND `product_id` = :p_id");
+
+        $this->db->bind(":u_id", $owner);
+        $this->db->bind(":p_id", $product);
+
+        $this->db->execute();
+
+        if($this->db->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     public function get_cart_items_count($uid)
     {
@@ -328,11 +345,12 @@ class User
         }
     }
 
-    public function getCartById($id)
+    public function getCartById($id, $owner)
     {
-        $this->db->query("SELECT * FROM `cart` WHERE `id` = :id");
+        $this->db->query("SELECT * FROM `cart` WHERE `id` = :id AND `user_id` = :owner");
 
         $this->db->bind(":id", $id);
+        $this->db->bind(":owner", $owner);
 
         $this->db->execute();
 

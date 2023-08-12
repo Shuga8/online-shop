@@ -153,6 +153,10 @@ class Pages extends Controller
 
         $id = $url[2];
 
+        // echo $url[3];
+
+        exit(0);
+
         if (!preg_match('/^[0-9]{1,}$/', $id)) {
             http_response_code(403);
             $_SESSION['flash-message'] = "Item not found";
@@ -168,10 +172,11 @@ class Pages extends Controller
             exit(0);
         } else {
 
-            // check if product already exists
-            if($this->userModel->getCartById($id)){
+            $owner_id = $_SESSION['g_uid'];
 
-                if($this->userModel->add_cart_item_quantity($id)){
+            // check if product already exists
+            if($this->userModel->getCartItemByName($owner_id, $owner_id)){
+                if($this->userModel->add_cart_item_quantity($id, $owner_id)){
                     $_SESSION['flash-message'] = "Updated item quantity in cart";
                     header("Location:" . SITE_URL . "/pages/shop");
                     exit(0);
@@ -182,6 +187,7 @@ class Pages extends Controller
 
             $cart_upload = [
                 'user_id' => $_SESSION['g_uid'],
+                'p_id' => $product->product_id,
                 'id' => $product->id,
                 'p_img' => $product->product_image,
                 'p_name' => $product->product_name,
@@ -313,7 +319,8 @@ class Pages extends Controller
             exit(0);
         } else {
             // Check if the product id is in the database
-            $checkIfCartItemExists = $this->userModel->getCartById($id);
+            $owner = $_SESSION['g_uid'];
+            $checkIfCartItemExists = $this->userModel->getCartById($id, $owner);
 
             if (!$checkIfCartItemExists) {
                 http_response_code(403);

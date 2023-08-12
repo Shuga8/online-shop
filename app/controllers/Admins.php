@@ -66,11 +66,11 @@ class Admins extends Controller
             }
 
             //Check if product name already exists
-            // if ($this->adminModel->check_product_name($data['p_name']) == true) {
-            //     $_SESSION['error'] = "<span style='color: red;'>Error: Product name already exists</span>";
-            //     header("Location: " . SITE_URL . "/Admins/new");
-            //     exit(0);
-            // }
+            if ($this->adminModel->check_product_name($data['p_name']) == true) {
+                $_SESSION['error'] = "<span style='color: red;'>Error: Product name already exists</span>";
+                header("Location: " . SITE_URL . "/Admins/new");
+                exit(0);
+            }
 
             //Validate Floats and Integers
 
@@ -133,7 +133,7 @@ class Admins extends Controller
                             if ($upload == true) {
 
                                 $data['imageName'] = $newImgName;
-                                $data['p_id'] = time() . uniqid() . $data['p_name'];
+                                $data['p_id'] = time() . uniqid();
 
                                 //Call Model upload Method
                                 $uploader = $this->adminModel->store_new_product($data);
