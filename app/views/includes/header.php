@@ -42,9 +42,9 @@
                             </form>
                         </div>
 
-                        <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                        <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center" style="border: none">
                             <div class="site-logo">
-                                <a href="<?php echo SITE_URL;  ?>/index" class="js-logo-clone"><?php echo SITE_NAME; ?></a>
+                                <a href="<?php echo SITE_URL;  ?>/index" class="js-logo-clone"><img src="<?= SITE_URL; ?>/public/images/logo.jpg" alt="" style="width: 180px;height: 70px;object-fit:cover;"></a>
                             </div>
                         </div>
 
