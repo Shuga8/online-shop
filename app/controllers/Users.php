@@ -100,7 +100,6 @@ class Users extends Controller
             'uimg' => $_SESSION['user_arr']['picture']
         ];
 
-        print_r($data);
 
         $google_id_exits = $this->userModel->check_google_id_if_exists($data['g_uid']);
 
