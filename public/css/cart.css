@@ -131,10 +131,10 @@
 .page-counter-container {
   inline-size: 100%;
   padding: 1rem;
-  border-top: solid 2px #2a76f9;
+  border-top: solid 2px #ceddf8;
   margin: 30px 0px; }
   .page-counter-container strong {
-    color: #2a76f9;
+    color: #78a9fd;
     margin: 3px; }
   .page-counter-container ul {
     float: right;
@@ -143,13 +143,13 @@
     list-style: none; }
     .page-counter-container ul li {
       padding: 6px 10px;
-      border: 0.09rem solid #2a76f9;
+      border: 0.09rem solid #78a9fd;
       color: #ccc; }
       .page-counter-container ul li a {
         text-decoration: none;
-        color: #2a76f9; }
+        color: #78a9fd; }
       .page-counter-container ul li.active {
-        background: #2a76f9;
+        background: #78a9fd;
         color: #fff; }
         .page-counter-container ul li.active a {
           color: #fff; }
