@@ -375,7 +375,7 @@ class User
 
     public function add_cart_item_quantity($id, $owner, $quantity = 1){
 
-        $this->db->query("UPDATE `cart` SET `product_quantity` = `product_quantity` + :quantity WHERE `id` = :id AND `user_id` = :u_id");
+        $this->db->query("UPDATE `cart` SET `product_quantity` = `product_quantity` + :quantity WHERE `product_id` = :id AND `user_id` = :u_id");
 
         $this->db->bind(":quantity", $quantity);
         $this->db->bind(":id", $id);

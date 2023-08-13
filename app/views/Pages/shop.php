@@ -198,7 +198,7 @@ include_once APPROOT . "/views/includes/header.php";
 
                   <div class="last">
 
-                    <a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $product->id . '/' . $product->product_name; ?>">ADD <i class="fas fa-cart-plus"></i></a>
+                    <a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $product->id . '/' . $product->product_id; ?>">ADD <i class="fas fa-cart-plus"></i></a>
 
                   </div>
 

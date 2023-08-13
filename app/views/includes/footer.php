@@ -35,14 +35,14 @@
                 <a href="#" class="block-6">
                     <img src="<?php echo SITE_URL; ?>/public/images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
                     <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
-                    <p>Promo from nuary 15 &mdash; 25, 2019</p>
+                    <p>Promo from August 15 &mdash; 25, 2023</p>
                 </a>
             </div>
             <div class="col-md-6 col-lg-3">
                 <div class="block-5 mb-5">
                     <h3 class="footer-heading mb-4">Contact Info</h3>
                     <ul class="list-unstyled">
-                        <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
+                        <li class="address"> <address>Suite 20 Petrus place beside Assemblies of God church 30 nanka strret new heaven Enugu</address></li>
                         <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
                         <li class="email">emailaddress@domain.com</li>
                     </ul>

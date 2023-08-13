@@ -16,10 +16,10 @@
 
   .cart-field {
     margin-block: 20px;
-    inline-size: clamp(350px, 68%, 1000px);
+    width: clamp(350px, 68%, 1000px);
     box-shadow: 5px 3px 7px #bbb, -3px 5px 7px #bbb;
     border-radius: 3px;
-    min-block-size: 500px;
+    min-height: 20px;
 
     .head {
       inline-size: 100%;

@@ -153,9 +153,9 @@ class Pages extends Controller
 
         $id = $url[2];
 
-        // echo $url[3];
+        $p_id = $url[3];
 
-        exit(0);
+        echo $id;
 
         if (!preg_match('/^[0-9]{1,}$/', $id)) {
             http_response_code(403);
@@ -175,8 +175,8 @@ class Pages extends Controller
             $owner_id = $_SESSION['g_uid'];
 
             // check if product already exists
-            if($this->userModel->getCartItemByName($owner_id, $owner_id)){
-                if($this->userModel->add_cart_item_quantity($id, $owner_id)){
+            if($this->userModel->getCartItemByName($owner_id, $p_id)){
+                if($this->userModel->add_cart_item_quantity($p_id, $owner_id)){
                     $_SESSION['flash-message'] = "Updated item quantity in cart";
                     header("Location:" . SITE_URL . "/pages/shop");
                     exit(0);
