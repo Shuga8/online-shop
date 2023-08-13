@@ -42,9 +42,9 @@
                 <div class="block-5 mb-5">
                     <h3 class="footer-heading mb-4">Contact Info</h3>
                     <ul class="list-unstyled">
-                        <li class="address"> <address>Suite 20 Petrus place beside Assemblies of God church 30 nanka strret new heaven Enugu</address></li>
-                        <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                        <li class="email">emailaddress@domain.com</li>
+                        <li class="address"> <address>Suite 20 Petrus place beside Assemblies of God church 30 nanka street new heaven Enugu</address></li>
+                        <li class="phone"><a href="tel://2349022862346">+234 090 2286 2346 </a></li>
+                        <li class="email">emailaddress@saint.com</li>
                     </ul>
                 </div>
 

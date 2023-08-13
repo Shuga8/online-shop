@@ -312,7 +312,7 @@ class Pages extends Controller
 
         $id = $url[2];
 
-        if (!isset($id) || empty($id)) {
+        if (!isset($id) || empty($id || !preg_match('/^[0-9]{1,}$/', $id))) {
             http_response_code(403);
             $_SESSION['flash-message'] = "Access Forbidden";
             header("Location:" . SITE_URL . "/cart");
@@ -341,5 +341,9 @@ class Pages extends Controller
                }
             }
         }
+    }
+
+    public function category(){
+        
     }
 }
