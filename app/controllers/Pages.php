@@ -155,8 +155,6 @@ class Pages extends Controller
 
         $p_id = $url[3];
 
-        echo $id;
-
         if (!preg_match('/^[0-9]{1,}$/', $id)) {
             http_response_code(403);
             $_SESSION['flash-message'] = "Item not found";
@@ -344,6 +342,6 @@ class Pages extends Controller
     }
 
     public function category(){
-        
+
     }
 }
