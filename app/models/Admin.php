@@ -285,4 +285,25 @@ class Admin
             return false;
         }
     }
+
+    public function get_product_by_pid($id)
+    {
+        // query to get product info by products id
+        $this->db->query("SELECT * FROM `products` WHERE `product_id` = :p_id LIMIT 1");
+
+        // bind query
+        $this->db->bind(":p_id", $id);
+
+        // execute query
+        $this->db->execute();
+
+        // check row count
+        if ($this->db->rowCount() > 0) {
+            $row = $this->db->single();
+
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }

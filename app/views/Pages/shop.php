@@ -181,14 +181,14 @@ include_once APPROOT . "/views/includes/header.php";
 
                 <div class="image">
 
-                  <a href="">
+                  <a href="<?php echo SITE_URL; ?>/pages/single/<?php echo $product->product_id; ?>">
                     <img src="<?php echo SITE_URL; ?>/public/extras/<?php echo $product->product_image; ?>" alt="Product ID">
                   </a>
                 </div>
 
                 <div class="details">
 
-                  <p class="name"><a href=""><?php echo $product->product_name; ?> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+                  <p class="name"><a href="<?php echo SITE_URL; ?>/pages/single/<?php echo $product->product_id; ?>"><?php echo $product->product_name; ?> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
 
                   <div class="caption"><?php echo $product->product_caption; ?></div>
 

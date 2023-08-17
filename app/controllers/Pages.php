@@ -190,6 +190,42 @@ class Pages extends Controller
         }
     }
 
+    public function single()
+    {
+
+        $url = $_GET['url'];
+
+        $url = explode('/', $url);
+
+        $id = $url[2];
+
+        $product = $this->adminModel->get_product_by_pid($id);
+
+        $message = "";
+
+        if($product == false){
+
+            $message = "bad";
+
+        }else{
+            $message = "ok";
+        }
+
+        $data = [
+            'title' => $product->product_name,
+            'home-class' => '',
+            'about-class' => '',
+            'shop-class' => 'active',
+            'cont-class' => '',
+            'login-class' => '',
+            'message' => $message,
+            'product' => $product
+        ];
+
+        $this->view('Pages/shop-single', $data);
+        
+    }
+
     public function contact()
     {
 
@@ -407,7 +443,4 @@ class Pages extends Controller
         }
     }
 
-    public function single()
-    {
-    }
 }
