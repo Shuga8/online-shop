@@ -70,6 +70,30 @@ class Pages extends Controller
         $next_page = $page + 1;
         $adjacents = 2;
 
+        $category = $_GET['url'];
+
+        $category = explode('/', $category);
+
+        $gender = $category[3];
+
+        if(strtolower($category[2]) == 'category'){
+
+            if(preg_match('/^(men|women|children|unisex)$/', $gender)){
+
+                $total_items = $this->adminModel->get_total_number_of_category_products($gender);
+                
+                echo $total_items;
+
+            }else{
+                echo "does not match";
+            }
+
+            
+
+        }
+
+        return;
+
         //Get total amout of products 
         $total_items = $this->adminModel->get_total_number_of_products();
 

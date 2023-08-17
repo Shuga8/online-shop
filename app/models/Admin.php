@@ -68,6 +68,27 @@ class Admin
         }
     }
 
+    public function get_total_number_of_category_products($category){
+
+        // Query to select total number of products from database
+        $this->db->query("SELECT COUNT(*) AS total_items FROM `products` WHERE `product_category` = :cat");
+
+        // bind params
+        $this->db->bind(":cat", $category);
+
+        // execute query
+        $this->db->execute();
+
+        if ($row = $this->db->single()) {
+
+            return $row->total_items;
+        } else {
+
+            return false;
+        }
+
+    }
+
     public function get_all_products_by_pagination($offset, $total_items_per_page)
     {
         //select all products from database using limit and offset
