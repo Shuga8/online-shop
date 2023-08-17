@@ -22,8 +22,8 @@ class Users extends Controller
         } else {
 
 
-            $clientID = "730276081884-42andi1o9vp5hvrnjgpgnhkhcnoaqr20.apps.googleusercontent.com";
-            $clientSecret = "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";
+            $clientID = "501928776612-2eeluklv5oe748vu8bgd65pidprhh9vr.apps.googleusercontent.com";
+            $clientSecret = "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";
 
 
             // Google API Client

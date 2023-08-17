@@ -15,9 +15,9 @@ include_once APPROOT . "/views/includes/header.php";
       <div class="col-md-5 mt-5 text-center text-md-left pt-5 pt-md-0">
         <h1 class="mb-2 mt-5 text-white">Finding Your Perfect Clothing</h1>
         <div class="intro-text text-center text-md-left">
-          <p class="mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+          <p class="mb-4 text-white">Saint Iconic Luxury.</p>
           <p>
-            <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
+            <a href="<?= SITE_URL; ?>/pages/shop" class="btn btn-sm btn-primary">Shop Now</a>
           </p>
         </div>
       </div>
