@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 06:27 AM
+-- Generation Time: Aug 17, 2023 at 07:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -62,9 +62,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`, `created_at`, `updated_at`) VALUES
-(1, '109033917743877585563', '169188145564d80fef9f81b', '16918814551686915531imgbin-dress-clothing-child-toddler-product-dress-fzeNcnyKykptvxeYwzWyPZK21_t.png', 'Children\'s flowery rose gown', 5000.00, 3, 'medium', 5000, '2023-08-13 04:57:50', '2023-08-13 05:02:46'),
-(2, '109033917743877585563', '169188119964d80eefc500a', '169188119916917775021686915295blue-mens-jeans-denim-pants-orange-background-contrast-satur-saturated-color-fashion-clothing-concept-view-above-109378110.jpg', 'Men\'s Blue Acoustic Jean', 8000.00, 2, 'large', 8000, '2023-08-13 05:02:52', '2023-08-13 05:02:55'),
-(4, '109033917743877585563', '169188043364d80bf1f1487', '16918804331684795314c74b61053cee77bc44d403daaa939d0c.jpg', 'Mens Ripped Black Jean', 15000.00, 1, 'large', 15000, '2023-08-13 05:03:23', '2023-08-13 05:03:23');
+(7, '109033917743877585563', '169188043364d80bf1f1487', '16918804331684795314c74b61053cee77bc44d403daaa939d0c.jpg', 'Mens Ripped Black Jean', 15000.00, 2, 'large', 15000, '2023-08-17 17:19:40', '2023-08-17 18:23:41'),
+(8, '109033917743877585563', '169188119964d80eefc500a', '169188119916917775021686915295blue-mens-jeans-denim-pants-orange-background-contrast-satur-saturated-color-fashion-clothing-concept-view-above-109378110.jpg', 'Men\'s Blue Acoustic Jean', 8000.00, 1, 'large', 8000, '2023-08-17 18:17:52', '2023-08-17 18:17:52');
 
 -- --------------------------------------------------------
 
@@ -166,7 +165,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products`
