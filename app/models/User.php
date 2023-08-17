@@ -309,7 +309,7 @@ class User
 
 
     public function get_cart_items_count($uid)
-    {
+    { 
         // query to get cart items count from db
         $this->db->query("SELECT COUNT(*) as items_count FROM `cart` WHERE `user_id` = :u_id");
 

@@ -188,7 +188,6 @@ class Users extends Controller
     public function logout()
     {
         session_destroy();
-        sleep(1);
         header('Location: ' . SITE_URL . '/login');
     }
 
