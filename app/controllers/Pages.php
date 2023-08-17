@@ -74,10 +74,10 @@ class Pages extends Controller
 
         $category = explode('/', $category);
 
-        $gender = $category[3];
 
-        if (preg_match('/^(category)$/', $category[2]) && preg_match('/^(men|women|children|unisex)$/', $gender)) {
+        if (count($category) == 4 && preg_match('/^(category)$/', $category[2]) && preg_match('/^(men|women|children|unisex)$/', $category[3])) {
 
+            $gender = $category[3];
             $total_items = $this->adminModel->get_total_number_of_category_products($gender);
 
             //check items errors
@@ -407,7 +407,7 @@ class Pages extends Controller
         }
     }
 
-    public function category()
+    public function single()
     {
     }
 }

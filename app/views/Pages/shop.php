@@ -34,13 +34,13 @@ include_once APPROOT . "/views/includes/header.php";
                   Latest
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <a class="dropdown-item" href="#">Men</a>
-                  <a class="dropdown-item" href="#">Women</a>
-                  <a class="dropdown-item" href="#">Unisex</a>
-                  <a class="dropdown-item" href="#">Children</a>
+                  <a class="dropdown-item" href="<?php echo SITE_URL; ?>/pages/shop/category/men">Men</a>
+                  <a class="dropdown-item" href="<?php echo SITE_URL; ?>/pages/shop/category/women">Women</a>
+                  <a class="dropdown-item" href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">Unisex</a>
+                  <a class="dropdown-item" href="<?php echo SITE_URL; ?>/pages/shop/category/children">Children</a>
                 </div>
               </div>
-              <div class="btn-group">
+              <!-- <div class="btn-group">
                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
                   <a class="dropdown-item" href="#">Relevance</a>
@@ -50,7 +50,7 @@ include_once APPROOT . "/views/includes/header.php";
                   <a class="dropdown-item" href="#">Price, low to high</a>
                   <a class="dropdown-item" href="#">Price, high to low</a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -262,10 +262,10 @@ include_once APPROOT . "/views/includes/header.php";
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto men-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto women-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Unisex</span> <span class="text-black ml-auto unisex-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/men" class="d-flex"><span>Men</span> <span class="text-black ml-auto men-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/women" class="d-flex"><span>Women</span> <span class="text-black ml-auto women-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex" class="d-flex"><span>Unisex</span> <span class="text-black ml-auto unisex-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/children" class="d-flex"><span>Children</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
           </ul>
         </div>
 
@@ -276,7 +276,7 @@ include_once APPROOT . "/views/includes/header.php";
             <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
           </div> -->
 
-          <div class="mb-4">
+          <!-- <div class="mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block">Size</h3>
             <label for="s_sm" class="d-flex">
               <input type="radio" id="s_sm" class="mr-2 mt-1" name="size"> <span class="text-black small-span-count">Small (...)</span>
@@ -291,7 +291,7 @@ include_once APPROOT . "/views/includes/header.php";
             <label for="s_xlg" class="d-flex">
               <input type="radio" id="s_xlg" class="mr-2 mt-1" name="size"> <span class="text-black xtra-large-span-count">Xtra Large (...)</span>
             </label>
-          </div>
+          </div> -->
 
           <!-- <div class="mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block">Color</h3>
