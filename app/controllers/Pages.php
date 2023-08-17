@@ -205,7 +205,10 @@ class Pages extends Controller
 
         if($product == false){
 
-            $message = "bad";
+            http_response_code(403);
+            $_SESSION['flash-message'] = "Access Forbidden";
+            header("Location:" . SITE_URL . "/pages/shop");
+            exit(0);
 
         }else{
             $message = "ok";
