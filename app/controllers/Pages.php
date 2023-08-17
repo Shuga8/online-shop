@@ -76,25 +76,66 @@ class Pages extends Controller
 
         $gender = $category[3];
 
-        if(strtolower($category[2]) == 'category'){
+        if (preg_match('/^(category)$/', $category[2]) && preg_match('/^(men|women|children|unisex)$/', $gender)) {
 
-            if(preg_match('/^(men|women|children|unisex)$/', $gender)){
+            $total_items = $this->adminModel->get_total_number_of_category_products($gender);
 
-                $total_items = $this->adminModel->get_total_number_of_category_products($gender);
-                
-                echo $total_items;
+            //check items errors
+            if ($total_items == false) {
 
-            }else{
-                echo "does not match";
+                $total_items = 0;
+            } else {
+
+                $total_items = $total_items;
             }
 
-            
+            //total number of pages is decided by the rounded up number of the division of total number of products by total items per page
 
-        }
+            $total_number_of_pages = ceil($total_items / $total_items_per_page);
+            $second_last = $total_number_of_pages - 1;
 
-        return;
+            //check if page number passed in the url is greater than the total number of page then redirect
+            if ($page > $total_number_of_pages && $total_number_of_pages != 0) {
 
-        //Get total amout of products 
+                header("Location: " . SITE_URL . "/pages/shop/". $category[2] ."/$gender/?page=$total_number_of_pages");
+
+                exit(0);
+            }
+
+            $message = "";
+
+            $products = $this->adminModel->get_category_products_by_pagination($offset, $total_items_per_page, $gender);            
+
+            if ($products == "No products found") {
+                $message = "No products found";
+            } elseif ($products == false) {
+                $message = "An error Occured please try again !";
+            } else {
+                $message = "ok";
+            }
+    
+            $data = [
+                'title' => 'Shop Page',
+                'home-class' => '',
+                'about-class' => '',
+                'shop-class' => 'active',
+                'cont-class' => '',
+                'login-class' => '',
+                'products' => $products,
+                'page' => $page,
+                'previous' => $previous_page,
+                'next' => $next_page,
+                'message' => $message,
+                'total_num_of_pages' => $total_number_of_pages,
+                'h_title' => 'Shop ' . ucwords($gender)
+            ];
+    
+            $this->view('Pages/shop', $data);
+
+            exit(0);
+        } else {
+
+             //Get total amout of products 
         $total_items = $this->adminModel->get_total_number_of_products();
 
         //check items errors
@@ -141,10 +182,12 @@ class Pages extends Controller
             'previous' => $previous_page,
             'next' => $next_page,
             'message' => $message,
-            'total_num_of_pages' => $total_number_of_pages
+            'total_num_of_pages' => $total_number_of_pages,
+            'h_title' => 'Shop All'
         ];
 
         $this->view('Pages/shop', $data);
+        }
     }
 
     public function contact()
@@ -197,8 +240,8 @@ class Pages extends Controller
             $owner_id = $_SESSION['g_uid'];
 
             // check if product already exists
-            if($this->userModel->getCartItemByName($owner_id, $p_id)){
-                if($this->userModel->add_cart_item_quantity($p_id, $owner_id)){
+            if ($this->userModel->getCartItemByName($owner_id, $p_id)) {
+                if ($this->userModel->add_cart_item_quantity($p_id, $owner_id)) {
                     $_SESSION['flash-message'] = "Updated item quantity in cart";
                     header("Location:" . SITE_URL . "/pages/shop");
                     exit(0);
@@ -350,22 +393,21 @@ class Pages extends Controller
                 header("Location:" . SITE_URL . "/cart");
                 exit(0);
             } else {
-               if($this->userModel->delete_from_cart_by_id($id)){
+                if ($this->userModel->delete_from_cart_by_id($id)) {
                     $_SESSION['flash-message'] = "Successfully deleted item from cart";
                     header("Location:" . SITE_URL . "/cart");
                     exit(0);
-               }else{
+                } else {
 
-                $_SESSION['flash-message'] = "Error!";
-                header("Location:" . SITE_URL . "/cart");
-                exit(0);
-                
-               }
+                    $_SESSION['flash-message'] = "Error!";
+                    header("Location:" . SITE_URL . "/cart");
+                    exit(0);
+                }
             }
         }
     }
 
-    public function category(){
-
+    public function category()
+    {
     }
 }

@@ -23,9 +23,10 @@
                     </div> -->
                     <div class="col-md-6 col-lg-2">
                         <ul class="list-unstyled">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Childrem</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/men">Men</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/women">Women</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/children">Children</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">unisex</a></li>
                         </ul>
                     </div>
                 </div>

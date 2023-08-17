@@ -120,6 +120,37 @@ class Admin
         }
     }
 
+    public function get_category_products_by_pagination($offset, $total_items_per_page, $gender){
+        //select all products from database using limit and offset
+        $this->db->query("SELECT * FROM `products` WHERE `product_category` = :cat ORDER BY created_at DESC LIMIT :ofset, :total_items_per_page");
+
+        //bind values
+        $this->db->bind(':cat', $gender);
+        $this->db->bind(':ofset', $offset);
+        $this->db->bind(':total_items_per_page', $total_items_per_page);
+
+        //execute query
+
+        if ($this->db->execute()) {
+
+            // check row count
+            if ($this->db->rowCount() > 0) {
+
+                //return all products in array
+                if ($row = $this->db->resultSet()) {
+
+                    return $row;
+                } else {
+                    return false;
+                }
+            } else {
+                return "No products found";
+            }
+        } else {
+            return false;
+        }
+    }
+
     public function check_admin_by_username($uname)
     {
         //query to check if admin username exists

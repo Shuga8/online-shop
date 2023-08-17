@@ -26,7 +26,7 @@ include_once APPROOT . "/views/includes/header.php";
         <div class="row">
           <div class="col-md-12 mb-5">
             <div class="float-md-left mb-4">
-              <h2 class="text-black h5">Shop All</h2>
+              <h2 class="text-black h5"><?= $data['h_title'] ?></h2>
             </div>
             <div class="d-flex">
               <div class="dropdown mr-1 ml-md-auto">
