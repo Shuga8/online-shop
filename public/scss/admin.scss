@@ -601,6 +601,14 @@ body {
   }
 }
 
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
 // Media queries on max width of 700px
 @media (max-width: 900px) {
   body {

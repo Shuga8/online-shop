@@ -405,6 +405,13 @@ body {
       z-index: 3;
       transition: 0s ease-in-out; }
 
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee; }
+
 @media (max-width: 900px) {
   body main {
     margin-left: 0px;
