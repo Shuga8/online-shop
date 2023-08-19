@@ -24,44 +24,91 @@
 <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
+      <div class="col-md-8 col-lg-7 col-xl-6 sm-none">
         <img src="<?php echo SITE_URL; ?>/public/images/megamenu-img.png"
           class="img-fluid" alt="Phone image">
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <div class="logo my-4">
-            <img class="img-fluid img-responsive" src="<?php echo SITE_URL; ?>/public/images/logo-sm.jpg" alt="" style="width: 100px">
+            <img class="img-fluid img-responsive" src="<?php echo SITE_URL; ?>/public/images/logo-sm.jpg" alt="" style="width: 100px;display: block;margin: 0px auto;">
         </div>
-        <form>
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="form1Example13" class="form-control form-control-lg" />
-            <label class="form-label text-white" for="form1Example13">Email address</label>
+        <form action="" method="POST">
+          <div class="form-group mb-4">
+            <label class="form-label text-white" for="uname">Username</label>
+            <input type="text" id="uname" class="form-control form-control-lg"/>
+            <span class="invalid-feedback"></span>
           </div>
 
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" id="form1Example23" class="form-control form-control-lg" />
-            <label class="form-label text-white" for="form1Example23">Password</label>
+          <div class="form-group mb-4">
+          <label class="form-label text-white" for="pass">Password</label>
+            <input type="password" id="pass" class="form-control form-control-lg" />
+            <span class="invalid-feedback"></span>
           </div>
 
           <div class="d-flex justify-content-around align-items-center mb-4">
-            <!-- Checkbox -->
-            <div class="form-check">
+            <div class="form-group">
               <input class="form-check-input" type="checkbox" value="" id="pass_visibility" />
               <label class="form-check-label text-white" for="form1Example3">Show password</label>
             </div>
             <a href="#!">Forgot password?</a>
           </div>
 
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+          <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Sign in</button>
 
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+    $('document').ready(function() {
+
+        $("#login-btn").click(function(e){
+
+            e.preventDefault();
+
+            let uname = $("#uname").val();
+            let pass = $("#pass").val();
+
+            let unameError = "";
+            let passError = "";
+
+            if(uname == ""){
+                unameError = "Username is required ";
+            }
+            if(pass == ""){
+                passError = "Password is required ";
+            }
+
+            if(unameError != ""){
+                $("#uname").addClass("is-invalid");
+                $("#uname").next('.invalid-feedback').text(unameError)
+                setTimeout(() => {
+                    $("#uname").removeClass("is-invalid"); 
+                }, 1500);
+            }
+            
+            if(passError != ""){
+                $("#pass").addClass("is-invalid");
+                $("#pass").next('.invalid-feedback').text(passError)
+                setTimeout(() => {
+                    $("#pass").removeClass("is-invalid"); 
+                }, 1500);
+            }
+
+            if(unameError != "" && passError != ""){
+                return false;
+            }
+
+            console.log("reaching");
+            
+        });
+    })
+
+</script>
 
 
 </body>

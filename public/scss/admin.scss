@@ -689,3 +689,12 @@ background: #eee;
     }
   }
 }
+
+
+// media queries on max width of 600px
+@media(max-width:600px){
+
+  .sm-none{
+    display: none;
+  }
+}
