@@ -253,4 +253,14 @@ class Admins extends Controller
 
         $this->view('Admin/new_admin', $data);
     }
+
+    // login admin
+    public function login(){
+
+        $data = [
+            'title' => 'Administrator Login'
+        ];
+
+        $this->view('Admin/login', $data);
+    }
 }
