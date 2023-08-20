@@ -1,0 +1,1 @@
+<?= password_hash('saintadmin1234', PASSWORD_BCRYPT); ?>

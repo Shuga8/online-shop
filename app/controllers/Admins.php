@@ -263,4 +263,20 @@ class Admins extends Controller
 
         $this->view('Admin/login', $data);
     }
+
+    public function auth(){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            if(isset($_POST['login'])){
+                
+                $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                echo $username . " " . $password;
+
+            }
+        }
+    }
 }

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title; ?></title>
+    <title><?= $title; ?> - <?= SITE_NAME ?></title>
     <meta http-equiv="Cache-Control" content="no-store" />
     <link rel="shortcut icon" href="<?php echo SITE_URL; ?>/public/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
@@ -33,6 +33,10 @@
             <img class="img-fluid img-responsive" src="<?php echo SITE_URL; ?>/public/images/logo-sm.jpg" alt="" style="width: 100px;display: block;margin: 0px auto;">
         </div>
         <form action="" method="POST">
+            <div class="mb-3 mx-auto d-flex justify-content-center">
+                <span class="alert alert-success text-center py-1 px-4">Redirecting ...</span>
+                <span class="alert alert-danger text-center py-1 px-4">Error ...</span>
+            </div>
           <div class="form-group mb-4">
             <label class="form-label text-white" for="uname">Username</label>
             <input type="text" id="uname" class="form-control form-control-lg"/>
@@ -66,12 +70,16 @@
 
     $('document').ready(function() {
 
+        $(".alert-success").hide();
+        $(".alert-danger").hide();
+
         $("#login-btn").click(function(e){
 
             e.preventDefault();
 
             let uname = $("#uname").val();
             let pass = $("#pass").val();
+            let loginBtn = $("#login-btn").val();
 
             let unameError = "";
             let passError = "";
@@ -99,11 +107,20 @@
                 }, 1500);
             }
 
-            if(unameError != "" && passError != ""){
+            
+
+            if(unameError != "" || passError != ""){
                 return false;
             }
 
-            console.log("reaching");
+            $.post("<?= SITE_URL; ?>/admins/auth", {
+                username: uname,
+                password: pass,
+                login: loginBtn
+            }, function(data, status) {
+                console.log(data);
+            })
+
             
         });
     })
