@@ -21,134 +21,135 @@
 <body>
 
 
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6 sm-none">
-        <img src="<?php echo SITE_URL; ?>/public/images/megamenu-img.png"
-          class="img-fluid" alt="Phone image">
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <div class="logo my-4">
-            <img class="img-fluid img-responsive" src="<?php echo SITE_URL; ?>/public/images/logo-sm.jpg" alt="" style="width: 100px;display: block;margin: 0px auto;">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6 sm-none">
+                    <img src="<?php echo SITE_URL; ?>/public/images/megamenu-img.png" class="img-fluid" alt="Phone image">
+                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <div class="logo my-4">
+                        <img class="img-fluid img-responsive" src="<?php echo SITE_URL; ?>/public/images/logo-sm.jpg" alt="" style="width: 100px;display: block;margin: 0px auto;">
+                    </div>
+                    <form action="" method="POST">
+                        <div class="mb-3 mx-auto d-flex justify-content-center">
+                            <span class="alert alert-success text-center py-1 px-4">Redirecting ...</span>
+                            <span class="alert alert-danger text-center py-1 px-4">Error ...</span>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="form-label text-white" for="uname">Username</label>
+                            <input type="text" id="uname" class="form-control form-control-lg" />
+                            <span class="invalid-feedback"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label text-white" for="pass">Password</label>
+                            <input type="password" id="pass" class="form-control form-control-lg" />
+                            <span class="invalid-feedback"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-around align-items-center mb-4">
+                            <div class="form-group">
+                                <input class="form-check-input" type="checkbox" value="" id="pass_visibility" />
+                                <label class="form-check-label text-white" for="form1Example3">Show password</label>
+                            </div>
+                            <a href="#!">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Sign in</button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <form action="" method="POST">
-            <div class="mb-3 mx-auto d-flex justify-content-center">
-                <span class="alert alert-success text-center py-1 px-4">Redirecting ...</span>
-                <span class="alert alert-danger text-center py-1 px-4">Error ...</span>
-            </div>
-          <div class="form-group mb-4">
-            <label class="form-label text-white" for="uname">Username</label>
-            <input type="text" id="uname" class="form-control form-control-lg"/>
-            <span class="invalid-feedback"></span>
-          </div>
+    </section>
 
-          <div class="form-group mb-4">
-          <label class="form-label text-white" for="pass">Password</label>
-            <input type="password" id="pass" class="form-control form-control-lg" />
-            <span class="invalid-feedback"></span>
-          </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('document').ready(function() {
 
-          <div class="d-flex justify-content-around align-items-center mb-4">
-            <div class="form-group">
-              <input class="form-check-input" type="checkbox" value="" id="pass_visibility" />
-              <label class="form-check-label text-white" for="form1Example3">Show password</label>
-            </div>
-            <a href="#!">Forgot password?</a>
-          </div>
+            $(".alert-success").hide();
+            $(".alert-danger").hide();
 
-          <button type="submit" id="login-btn" class="btn btn-primary btn-lg btn-block">Sign in</button>
+            $("#pass_visibility").click(function() {
+                console.log("working");
+                var passwordField = $("#pass");
 
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-
-    $('document').ready(function() {
-
-        $(".alert-success").hide();
-        $(".alert-danger").hide();
-
-        $("#pass_visibility").click(function() {
-    var passwordField = $("#pass");
-    
-    if (passwordField.attr("type") === "password") {
-      passwordField.attr("type", "text");
-    } else {
-      passwordField.attr("type", "password");
-    }
-  });
+                if (passwordField.attr("type") === "password") {
+                    passwordField.attr("type", "text");
+                } else {
+                    passwordField.attr("type", "password");
+                }
+            });
 
 
-        $("#login-btn").click(function(e){
+            $("#login-btn").click(function(e) {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            let uname = $("#uname").val();
-            let pass = $("#pass").val();
-            let loginBtn = $("#login-btn").val();
+                let uname = $("#uname").val();
+                let pass = $("#pass").val();
+                let loginBtn = $("#login-btn").val();
 
-            let unameError = "";
-            let passError = "";
+                let unameError = "";
+                let passError = "";
 
-            if(uname == ""){
-                unameError = "Username is required ";
-            }
-            if(pass == ""){
-                passError = "Password is required ";
-            }
+                if (uname == "") {
+                    unameError = "Username is required ";
+                }
+                if (pass == "") {
+                    passError = "Password is required ";
+                }
 
-            if(unameError != ""){
-                $("#uname").addClass("is-invalid");
-                $("#uname").next('.invalid-feedback').text(unameError)
-                setTimeout(() => {
-                    $("#uname").removeClass("is-invalid"); 
-                }, 1500);
-            }
-            
-            if(passError != ""){
-                $("#pass").addClass("is-invalid");
-                $("#pass").next('.invalid-feedback').text(passError)
-                setTimeout(() => {
-                    $("#pass").removeClass("is-invalid"); 
-                }, 1500);
-            }
+                if (unameError != "") {
+                    $("#uname").addClass("is-invalid");
+                    $("#uname").next('.invalid-feedback').text(unameError)
+                    setTimeout(() => {
+                        $("#uname").removeClass("is-invalid");
+                    }, 1500);
+                }
 
-            
-
-            if(unameError != "" || passError != ""){
-                return false;
-            }
-
-            $.post("<?= SITE_URL; ?>/admins/auth", {
-
-                username: uname,
-                password: pass,
-                login: loginBtn
-
-            }, function(data, status) {
-                
-                $(".alert-danger").html(data);
-
-                $(".alert-danger").show();
-
-                setTimeout(() => {
-                    $(".alert-danger").hide();
-                }, 1500);
+                if (passError != "") {
+                    $("#pass").addClass("is-invalid");
+                    $("#pass").next('.invalid-feedback').text(passError)
+                    setTimeout(() => {
+                        $("#pass").removeClass("is-invalid");
+                    }, 1500);
+                }
 
 
 
-            })
+                if (unameError != "" || passError != "") {
+                    return false;
+                }
 
-            
-        });
-    })
+                $.post("<?= SITE_URL; ?>/admins/auth", {
 
-</script>
+                    username: uname,
+                    password: pass,
+                    login: loginBtn
+
+                }, function(data, status) {
+
+                    if(data !== "continue"){
+
+                    $(".alert-danger").html(data);
+
+                    $(".alert-danger").show();
+
+                    setTimeout(() => {
+                        $(".alert-danger").hide();
+                    }, 1500);
+
+                }
+
+
+                })
+
+
+            });
+        })
+    </script>
 
 
 </body>

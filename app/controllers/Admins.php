@@ -274,7 +274,11 @@ class Admins extends Controller
 
                 $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                echo $username . " " . $password;
+                if(!$this->adminModel->auth($username, $password)){
+                    echo "Invalid credentials";
+                }else{
+                    echo "continue";
+                }
 
             }
         }

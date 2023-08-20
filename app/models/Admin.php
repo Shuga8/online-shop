@@ -9,6 +9,28 @@ class Admin
         $this->db = new Database();
     }
 
+    public function auth($uname, $pass){
+
+        $this->db->query("SELECT * FROM `admins` WHERE username = :username");
+
+        $this->db->bind(":username", $uname);
+
+        $this->db->execute();
+
+        if($this->db->rowCount() > 0){
+            
+            $hashed = $this->db->single()->password;
+
+            if(password_verify($pass, $hashed)){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
     // A public function to store newly added products
     public function store_new_product($data)
     {
