@@ -1,3 +1,10 @@
+<?php 
+
+    $admin_session = (array) $_SESSION['admin'];
+
+    extract($admin_session);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

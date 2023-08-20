@@ -16,6 +16,11 @@ class Admins extends Controller
     public function index()
     {
 
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
         $data = [
             'title' => 'Dashboard'
         ];
@@ -29,6 +34,10 @@ class Admins extends Controller
     // Adding new products page
     public function new()
     {
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
 
         $data = [
             'title' => 'New'
@@ -40,6 +49,11 @@ class Admins extends Controller
     // storing new products
     public function store()
     {
+
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
 
         $data = [
             'title' => 'Add products'
@@ -169,6 +183,12 @@ class Admins extends Controller
     //manage products
     public function manage()
     {
+
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
         if (isset($_GET['page']) && $_GET['page'] != "" && $_GET['page'] > 0) {
 
             //Check if page number only consists of numbers 
@@ -249,6 +269,11 @@ class Admins extends Controller
     public function add()
     {
 
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
         $data = [
             'title' => 'Add admin'
         ];
@@ -274,6 +299,11 @@ class Admins extends Controller
 
     public function auth()
     {
+
+        if(isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/index");
+            exit();
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -301,5 +331,18 @@ class Admins extends Controller
 
     public function logout()
     {
+
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/index");
+            exit();
+        }else{
+
+            unset($_SESSION['admin']);
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+
+
     }
 }
