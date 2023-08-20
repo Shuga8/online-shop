@@ -73,6 +73,17 @@
         $(".alert-success").hide();
         $(".alert-danger").hide();
 
+        $("#pass_visibility").click(function() {
+    var passwordField = $("#pass");
+    
+    if (passwordField.attr("type") === "password") {
+      passwordField.attr("type", "text");
+    } else {
+      passwordField.attr("type", "password");
+    }
+  });
+
+
         $("#login-btn").click(function(e){
 
             e.preventDefault();
@@ -114,11 +125,23 @@
             }
 
             $.post("<?= SITE_URL; ?>/admins/auth", {
+
                 username: uname,
                 password: pass,
                 login: loginBtn
+
             }, function(data, status) {
-                console.log(data);
+                
+                $(".alert-danger").html(data);
+
+                $(".alert-danger").show();
+
+                setTimeout(() => {
+                    $(".alert-danger").hide();
+                }, 1500);
+
+
+
             })
 
             
