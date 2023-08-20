@@ -19,10 +19,12 @@ class Admin
 
         if($this->db->rowCount() > 0){
             
-            $hashed = $this->db->single()->password;
+            $row = $this->db->single();
+
+            $hashed = $row->password;
 
             if(password_verify($pass, $hashed)){
-                return true;
+                return $row;
             }else{
                 return false;
             }

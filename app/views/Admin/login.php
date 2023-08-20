@@ -1,4 +1,9 @@
-<?php extract($data); ?>
+<?php 
+
+extract($data);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +23,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="text-white">
 
 
-    <section class="vh-100">
+    <section class="vh-100 text-white">
         <div class="container py-5 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6 sm-none">
@@ -131,22 +136,31 @@
 
                 }, function(data, status) {
 
-                    if(data !== "continue"){
+                    if (data !== "continue") {
 
-                    $(".alert-danger").html(data);
+                        $(".alert-danger").html(data);
 
-                    $(".alert-danger").show();
+                        $(".alert-danger").show();
 
-                    setTimeout(() => {
-                        $(".alert-danger").hide();
-                    }, 1500);
+                        setTimeout(() => {
+                            $(".alert-danger").hide();
+                        }, 1500);
+                    }else{
 
-                }
+                        $(".alert-success").show();
 
+                        setTimeout(() => {
+                            $(".alert-success").hide();
+                        }, 1500);
 
+                        setTimeout(() => {
+
+                            location.href  = "<?= SITE_URL; ?>/admins/index";
+
+                        }, 1800);
+
+                    }
                 })
-
-
             });
         })
     </script>

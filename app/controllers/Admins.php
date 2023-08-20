@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 class Admins extends Controller
 {
 
@@ -190,7 +192,7 @@ class Admins extends Controller
         //Get total amout of products 
         $total_items = $this->adminModel->get_total_number_of_products();
 
-        
+
         //check items errors
         if ($total_items == false) {
             $total_items = 0;
@@ -215,8 +217,8 @@ class Admins extends Controller
         $products = $this->adminModel->get_all_products_by_pagination($offset, $total_items_per_page);
 
 
-        
-        
+
+
 
 
         if ($products == "No products found") {
@@ -255,7 +257,13 @@ class Admins extends Controller
     }
 
     // login admin
-    public function login(){
+    public function login()
+    {
+
+        if(isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/index");
+            exit();
+        }
 
         $data = [
             'title' => 'Administrator Login'
@@ -264,23 +272,34 @@ class Admins extends Controller
         $this->view('Admin/login', $data);
     }
 
-    public function auth(){
+    public function auth()
+    {
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if(isset($_POST['login'])){
-                
+            if (isset($_POST['login'])) {
+
                 $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
                 $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                if(!$this->adminModel->auth($username, $password)){
-                    echo "Invalid credentials";
-                }else{
-                    echo "continue";
-                }
+                $auth = $this->adminModel->auth($username, $password);
 
+                $_SESSION['admin'] = [];
+
+                if ($auth != false) {
+
+                    array_push($_SESSION['admin'], $auth);
+                    echo "continue";
+                    exit();
+                } else {
+                    echo "Invalid Authentication";
+                }
             }
         }
+    }
+
+    public function logout()
+    {
     }
 }
