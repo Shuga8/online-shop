@@ -270,8 +270,28 @@ class Admins extends Controller
             exit();
         }
 
+        $id = "";
+        if(isset($_GET['id'])){
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        }else{
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }
+
+        $product = $this->adminModel->get_product_by_pid($id);
+
+        if($product == false){
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }else{
+            $product = (array) $product;
+        }
+
+
+
         $data = [
             'title' => 'Edit',
+            'product' => $product
         ];
 
         $this->view('Admin/edit', $data);
