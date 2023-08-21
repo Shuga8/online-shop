@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2023 at 07:40 PM
+-- Generation Time: Aug 21, 2023 at 04:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -37,6 +37,13 @@ CREATE TABLE `admins` (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'saintman', 'admin@sainticonicluxury.com', '$2y$10$2YrQdzQsekYwjFgf1X2roOXy1fmXNyq1ZvwmvPp1C9l6DjPD82DmW', 'super-admin', '2023-08-20 16:19:58', '2023-08-20 16:19:58');
+
 -- --------------------------------------------------------
 
 --
@@ -62,8 +69,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`, `created_at`, `updated_at`) VALUES
-(7, '109033917743877585563', '169188043364d80bf1f1487', '16918804331684795314c74b61053cee77bc44d403daaa939d0c.jpg', 'Mens Ripped Black Jean', 15000.00, 2, 'large', 15000, '2023-08-17 17:19:40', '2023-08-17 18:23:41'),
-(8, '109033917743877585563', '169188119964d80eefc500a', '169188119916917775021686915295blue-mens-jeans-denim-pants-orange-background-contrast-satur-saturated-color-fashion-clothing-concept-view-above-109378110.jpg', 'Men\'s Blue Acoustic Jean', 8000.00, 1, 'large', 8000, '2023-08-17 18:17:52', '2023-08-17 18:17:52');
+(9, '109033917743877585563', '169261274464e33888a8890', '1692612744saint.jpg', 'SIL X Louis Vuitton', 25000.00, 2, 'large', 25000, '2023-08-21 11:13:50', '2023-08-21 13:16:44');
 
 -- --------------------------------------------------------
 
@@ -82,6 +88,7 @@ CREATE TABLE `products` (
   `product_category` varchar(10) NOT NULL,
   `product_size` varchar(10) NOT NULL,
   `product_quantity` int(11) NOT NULL,
+  `is_featured` varchar(10) NOT NULL DEFAULT 'No',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -90,12 +97,14 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_id`, `product_name`, `product_caption`, `product_image`, `product_price`, `product_discount`, `product_category`, `product_size`, `product_quantity`, `created_at`, `updated_at`) VALUES
-(1, '169188043364d80bf1f1487', 'Mens Ripped Black Jean', 'High quality men\'s jean', '16918804331684795314c74b61053cee77bc44d403daaa939d0c.jpg', 15000.00, 0, 'men', 'large', 50, '2023-08-12 23:47:13', '2023-08-12 23:47:13'),
-(2, '169188053064d80c5251ded', 'K.9 High Balance Shoe', 'High Quality Shoe', '169188053016845225343-1-600x600.png', 22300.00, 0, 'unisex', 'large', 10, '2023-08-12 23:48:50', '2023-08-12 23:51:37'),
-(3, '169188108564d80e7da6484', 'Women\'s Caves Ripped Jean', 'High quality jean', '169188108516917779471684795683img-20220324-wa0096.jpg', 7000.00, 0, 'women', 'large', 20, '2023-08-12 23:58:05', '2023-08-12 23:58:05'),
-(4, '169188119964d80eefc500a', 'Men\'s Blue Acoustic Jean', 'High quality men\'s jean', '169188119916917775021686915295blue-mens-jeans-denim-pants-orange-background-contrast-satur-saturated-color-fashion-clothing-concept-view-above-109378110.jpg', 8000.00, 0, 'men', 'large', 30, '2023-08-12 23:59:59', '2023-08-12 23:59:59'),
-(5, '169188145564d80fef9f81b', 'Children\'s flowery rose gown', 'High quality', '16918814551686915531imgbin-dress-clothing-child-toddler-product-dress-fzeNcnyKykptvxeYwzWyPZK21_t.png', 5000.00, 0, 'children', 'medium', 15, '2023-08-13 00:04:15', '2023-08-13 00:04:15');
+INSERT INTO `products` (`id`, `product_id`, `product_name`, `product_caption`, `product_image`, `product_price`, `product_discount`, `product_category`, `product_size`, `product_quantity`, `is_featured`, `created_at`, `updated_at`) VALUES
+(1, '169188043364d80bf1f1487', 'Mens Ripped Black Jean', 'High quality men\'s jean', '16918804331684795314c74b61053cee77bc44d403daaa939d0c.jpg', 15000.00, 0, 'men', 'large', 50, 'Yes', '2023-08-12 23:47:13', '2023-08-21 15:01:43'),
+(2, '169188053064d80c5251ded', 'K.9 High Balance Shoe', 'High Quality Shoe', '169188053016845225343-1-600x600.png', 22300.00, 0, 'unisex', 'large', 10, 'Yes', '2023-08-12 23:48:50', '2023-08-21 14:10:50'),
+(3, '169188108564d80e7da6484', 'Women\'s Caves Ripped Jean', 'High quality jean', '169188108516917779471684795683img-20220324-wa0096.jpg', 7000.00, 0, 'women', 'large', 20, 'No', '2023-08-12 23:58:05', '2023-08-12 23:58:05'),
+(4, '169188119964d80eefc500a', 'Men\'s Blue Acoustic Jean', 'High quality men\'s jean', '169188119916917775021686915295blue-mens-jeans-denim-pants-orange-background-contrast-satur-saturated-color-fashion-clothing-concept-view-above-109378110.jpg', 8000.00, 0, 'men', 'large', 30, 'Yes', '2023-08-12 23:59:59', '2023-08-21 14:10:58'),
+(5, '169188145564d80fef9f81b', 'Children\'s flowery rose gown', 'High quality', '16918814551686915531imgbin-dress-clothing-child-toddler-product-dress-fzeNcnyKykptvxeYwzWyPZK21_t.png', 5000.00, 0, 'children', 'medium', 15, 'No', '2023-08-13 00:04:15', '2023-08-13 00:04:15'),
+(6, '169256145264e2702c71766', 'Hot Gray T-Shirt', 'Hot Products', '1692561452b6f8258008e5fad45a6e70918d66b66e.jpg', 5000.00, 0, 'men', 'large', 30, 'Yes', '2023-08-20 20:57:32', '2023-08-21 14:10:42'),
+(7, '169261274464e33888a8890', 'SIL X Louis Vuitton', 'High Quality Shoe', '1692619677saint.jpg', 60000.00, 0, 'men', 'large', 40, 'Yes', '2023-08-21 11:12:24', '2023-08-21 14:06:49');
 
 -- --------------------------------------------------------
 
@@ -159,19 +168,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
