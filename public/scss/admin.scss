@@ -637,7 +637,9 @@ body {
 
         > div {
           > img {
+            display: block;
             width: 100px;
+            margin-inline: auto;
           }
         }
       }

@@ -46,9 +46,9 @@ include_once APPROOT . "/views/components/flash-message.php";
                         <img src="<?= SITE_URL . '/public/images/logo-sm.jpg';  ?>">
                     </div>
                     <form action="" method="POST" enctype="application/x-www-form-urlencoded">
-                        <div class="my-2">
-                            <span class="alert alert-success text-white">Redirecting ...</span>
-                            <span class="alert alert-danger text-white">Error ...</span>
+                        <div class="my-2 text-center">
+                            <span class="alert alert-success text-white py-1 px-2">Redirecting ...</span>
+                            <span class="alert alert-danger text-white py-1 px-2">Error ...</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label text-dark">Username</label>

@@ -30,7 +30,6 @@ extract($data['product']);
                     </div>
                     <div class="col-md-6">
                         <h2 class="text-white"><?= $product_name; ?></h2>
-                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p> -->
                         <p class="mb-4 text-white"><?= $product_caption; ?></p>
                         <p><strong class="text-primary h4 amount"><?= $product_price; ?></strong></p>
                         <p class="text-white"><span class="text-warning">Category: </span><?= ucwords($product_category); ?></p>

@@ -603,6 +603,11 @@ class Admins extends Controller
     // Adding discount
     public function add_discount_to_product()
     {
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -698,6 +703,37 @@ class Admins extends Controller
             $_SESSION['flash-message'] = "you have successfully signed out";
             header("Location: " . SITE_URL . "/admins/login");
             exit(0);
+        }
+    }
+
+    public function delete_product()
+    {
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        if (isset($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            http_response_code(403);
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit(0);
+        }
+
+        $delete = $this->adminModel->deleteProduct($id);
+
+        if ($delete) {
+            $_SESSION['flash-message'] = "Product deleted successfully";
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit(0);
+        } else {
+            $_SESSION['flash-message'] = "An error occured!";
+            http_response_code(403);
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
         }
     }
 }

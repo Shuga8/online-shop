@@ -424,4 +424,16 @@ class Admin
             return false;
         }
     }
+
+    public function deleteProduct($id){
+        $this->db->query("DELETE FROM `products` WHERE `product_id` = :p_id");
+
+        $this->db->bind(":p_id", $id);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

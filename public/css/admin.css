@@ -434,7 +434,9 @@ body {
         margin-top: 10px;
         width: auto !important; }
         body .login-section .login-form-container .login-form > div > img {
-          width: 100px; }
+          display: block;
+          width: 100px;
+          margin-inline: auto; }
 
 .divider:after,
 .divider:before {
