@@ -52,7 +52,7 @@ include_once APPROOT . "/views/components/flash-message.php";
                         </div>
                         <div class="form-group">
                             <label class="form-label text-dark">Username</label>
-                            <input type="text" id="uname" class="form-control form-control-slg" />
+                            <input type="text" id="uname" class="form-control form-control-lg" />
                             <span class="invalid-feedback"></span>
                         </div>
 

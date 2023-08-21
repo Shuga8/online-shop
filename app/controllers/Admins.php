@@ -264,7 +264,8 @@ class Admins extends Controller
     }
 
     // Show single product
-    public function product(){
+    public function product()
+    {
 
         if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
@@ -273,7 +274,6 @@ class Admins extends Controller
 
         $linkTag = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
 
-        $id = "";
         if (isset($_GET['id'])) {
             $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         } else {
@@ -300,8 +300,9 @@ class Admins extends Controller
     }
 
     // feature products 
-    public function feature_product(){
-        
+    public function feature_product()
+    {
+
         if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
@@ -317,27 +318,28 @@ class Admins extends Controller
 
         $count = $this->adminModel->checkIfFeaturedProductsIsUpToThree();
 
-        if($count){
+        if ($count) {
             $_SESSION['flash-message'] = "Cannot have more than 3 featured products!";
-            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
             exit();
         }
 
         $featured = $this->adminModel->changeFeaturedToYes($id);
 
-        if($featured){
+        if ($featured) {
             $_SESSION['flash-message'] = "Added to featured products";
-            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
             exit();
-        }else{
+        } else {
             $_SESSION['flash-message'] = "Error! could not add products to featured images";
-            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
             exit();
         }
     }
 
 
-    public function unfeature_product(){
+    public function unfeature_product()
+    {
         if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
@@ -353,13 +355,13 @@ class Admins extends Controller
 
         $featured = $this->adminModel->changeFeaturedToNo($id);
 
-        if($featured){
+        if ($featured) {
             $_SESSION['flash-message'] = "Removed from featured products";
-            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
             exit();
-        }else{
+        } else {
             $_SESSION['flash-message'] = "Error! could not remove product from featured products";
-            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
             exit();
         }
     }
@@ -450,7 +452,7 @@ class Admins extends Controller
             }
 
             if (!empty($_FILES['product_img']['name'])) {
-                
+
                 //Get all file parameters/values
                 $imgName = $_FILES['product_img']['name'];
                 $imgSize = $_FILES['product_img']['size'];
@@ -515,17 +517,15 @@ class Admins extends Controller
                         }
                     }
                 }
-
-
             } else {
 
                 $update = $this->adminModel->update_product_without_image($data);
 
-                if($update){
+                if ($update) {
                     $_SESSION['error'] = "<span style='color: green;'>Update successfull</span>";
                     header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                     exit(0);
-                }else{
+                } else {
                     $_SESSION['error'] = "<span style='color: red;'>An error occurred please try again!.</span>";
                     header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                     exit(0);
@@ -537,7 +537,7 @@ class Admins extends Controller
         }
     }
 
-    
+
 
     // featured produts
     public function feature()
@@ -561,7 +561,8 @@ class Admins extends Controller
     }
 
     // Discount page
-    public function product_discount(){
+    public function product_discount()
+    {
         if (!isset($_SESSION['admin'])) {
             $_SESSION['flash-message'] = "Access forbidden!";
             header("Location: " . SITE_URL . "/admins/login");
@@ -579,7 +580,7 @@ class Admins extends Controller
 
         $linkTag = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
 
-        
+
         $product = $this->adminModel->get_product_by_pid($id);
 
         if ($product == false) {
@@ -597,6 +598,45 @@ class Admins extends Controller
         ];
 
         $this->view('Admin/discount', $data);
+    }
+
+    // Adding discount
+    public function add_discount_to_product()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            foreach ($_POST as $key => $value) {
+                $_POST[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            };
+
+            $id = $_POST['id'];
+            $discount = $_POST['discount'];
+
+            if (!preg_match('/^[0-9]{1,}$/', $discount) || !preg_match('/^[a-zA-Z0-9]{1,}$/', $id)) {
+                $_SESSION['flash-message'] = "Accesss forbidden";
+                header("Location: " . SITE_URL . "/admins/manage");
+                exit(0);
+            }
+
+            $discounted = $this->adminModel->add_discount_to_product($id, $discount);
+
+            if ($discounted) {
+                $_SESSION['flash-message'] = "Discount added successfully";
+                header("Location: " . SITE_URL . "/admins/product/?id=" . $id);
+                exit(0);
+            } else {
+                $_SESSION['flash-message'] = "An error occured!";
+                http_response_code(403);
+                header("Location: " . SITE_URL . "/admins/manage");
+                exit();
+            }
+        } else {
+            $_SESSION['flash-message'] = "Accesss forbidden";
+            http_response_code(403);
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }
     }
 
     // login admin
@@ -657,7 +697,7 @@ class Admins extends Controller
             unset($_SESSION['admin']);
             $_SESSION['flash-message'] = "you have successfully signed out";
             header("Location: " . SITE_URL . "/admins/login");
-            exit();
+            exit(0);
         }
     }
 }
