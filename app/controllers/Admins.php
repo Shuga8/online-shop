@@ -297,6 +297,55 @@ class Admins extends Controller
         $this->view('Admin/edit', $data);
     }
 
+    public function update(){
+
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+            $data = [
+
+                'title' => 'Add products',
+                'p_id' =>   trim($_POST['product_id']),
+                'p_name' => trim($_POST['product_name']),
+                'p_cap' => trim($_POST['product_cap']),
+                'p_price' => trim($_POST['product_price']),
+                'p_category' => trim($_POST['product_category']),
+                'p_size' => trim($_POST['product_size']),
+                'p_quantity' => trim($_POST['product_quantity']),
+            ];
+
+            foreach ($data as $key => $value) {
+                if (empty($value)) {
+                    $_SESSION['error'] = "<span style='color: red;'>Error: Fields empty !!!</span>";
+                    header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                    exit(0);
+                }
+            }
+
+            //Validate Floats and Integers
+
+            if (!preg_match("/^[0-9\.]{1,}$/", $data['p_price'])) {
+                $_SESSION['error'] = "<span style='color: red;'>Error: Price can only be numbers or decimal</span>";
+                header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                exit(0);
+            }
+
+            if (!preg_match("/^[0-9]{1,}$/", $data['p_quantity'])) {
+                $_SESSION['error'] = "<span style='color: red;'>Error: Quantity can only be numbers!</span>";
+                header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                exit(0);
+            }
+        }else{
+            header("Location: " . SITE_URL . "/admins/login");
+            exit(0);
+        }
+    }
+
     // featured produts
     public function feature(){
 

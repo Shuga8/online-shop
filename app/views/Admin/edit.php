@@ -34,6 +34,7 @@ extract($data['product']);
             </p>
             <div class="input-field">
                 <label for="product_name">Product name</label>
+                <input type="hidden" name="product_id" value="<?= $product_id; ?>">
                 <input type="text" name="product_name" id="product_name" value="<?= $product_name ?>">
             </div>
 
@@ -93,7 +94,7 @@ extract($data['product']);
                 <input type="number" name="product_quantity" id="product_quantity" value="<?= $product_quantity; ?>">
             </div>
 
-            <button type="submit" id="submit" name="submit">Add <i class="fas fa-plus-square"></i></button>
+            <button type="submit" id="submit" name="submit">Update <i class="fas fa-file-pen"></i></button>
 
         </form>
     </div>
