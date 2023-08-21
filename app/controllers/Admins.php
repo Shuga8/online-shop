@@ -263,6 +263,39 @@ class Admins extends Controller
         $this->view("Admin/manage_products", $data);
     }
 
+    // Show single product
+    public function product(){
+
+        if (!isset($_SESSION['admin'])) {
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        $id = "";
+        if (isset($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }
+
+        $product = $this->adminModel->get_product_by_pid($id);
+
+        if ($product == false) {
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        } else {
+            $product = (array) $product;
+        }
+
+        $data = [
+            'title' => ucwords(strtolower($product['product_name'])),
+            'product' => $product,
+        ];
+
+        $this->view('Admin/product', $data);
+    }
+
     // edit product 
     public function edit()
     {

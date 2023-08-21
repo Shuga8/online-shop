@@ -29,7 +29,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
                             <p><?php echo $product->product_caption; ?></p>
                             <p class="amount"><?php echo $product->product_price; ?></p>
 
-                            <a href="<?= SITE_URL . '/admins/edit/?id=' . $product->product_id; ?>">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="<?= SITE_URL . '/admins/product/?id=' . $product->product_id; ?>">View <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
 
                     </div>
