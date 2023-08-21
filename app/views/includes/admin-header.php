@@ -1,6 +1,6 @@
 <?php 
 
-    $admin_session = (array) $_SESSION['admin'];
+    $admin_session = (array) $_SESSION['admin'][0];
 
     extract($admin_session);
 
@@ -13,6 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Cache-Control" content="no-store" />
+    <link rel="shortcut icon" href="<?php echo SITE_URL; ?>/public/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/public/fonts/icomoon/style.css">
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>/public/css/admin.css">

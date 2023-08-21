@@ -29,7 +29,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
                         <img src="<?php echo SITE_URL; ?>/public/images/user_icon.png" alt="User /">
 
                         <div class="box">
-                            <h3>John Doe</h3>
+                            <h3><?= ucwords($username); ?></h3>
                             <p>Admin</p>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ include_once APPROOT . "/views/includes/admin-header.php";
 
                             <div class="1">
                                 <h3>Role</h3>
-                                <p>Super Admin</p>
+                                <p><?= ucwords(str_replace("-", " ", $role)); ?></p>
                             </div>
 
                         </div>

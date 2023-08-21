@@ -77,7 +77,7 @@ extract($data);
             $(".alert-danger").hide();
 
             $("#pass_visibility").click(function() {
-                console.log("working");
+                
                 var passwordField = $("#pass");
 
                 if (passwordField.attr("type") === "password") {
