@@ -376,7 +376,7 @@ class Admins extends Controller
                         //check if file exceeds maximum file size limit
                         if ($imgSize > 3000000) {  //if it exceeds 3MB
                             $_SESSION['error'] = "<span style='color: red;'>Error: Images should not exceed 3MB!!</span>";
-                            header("Location: " . SITE_URL . "/Admins/new");
+                            header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                             exit(0);
                         } else {
 

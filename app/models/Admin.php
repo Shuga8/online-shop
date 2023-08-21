@@ -336,7 +336,7 @@ class Admin
 
         $this->db->bind(":name", $data['p_name']);
         $this->db->bind(":cap", $data['p_cap']);
-        $this->db->bind(":img", $data['p_img']);
+        $this->db->bind(":img", $data['img']);
         $this->db->bind(":price", $data['p_price']);
         $this->db->bind(":category", $data['p_category']);
         $this->db->bind(":size", $data['p_size']);
