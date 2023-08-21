@@ -560,6 +560,45 @@ class Admins extends Controller
         $this->view('Admin/new_admin', $data);
     }
 
+    // Discount page
+    public function product_discount(){
+        if (!isset($_SESSION['admin'])) {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        if (isset($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            http_response_code(403);
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit(0);
+        }
+
+        $linkTag = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
+
+        
+        $product = $this->adminModel->get_product_by_pid($id);
+
+        if ($product == false) {
+            $_SESSION['flash-message'] = "Access forbidden!";
+            http_response_code(403);
+            header("Location: " . SITE_URL . "/admins/manage");
+        } else {
+            $product = (array) $product;
+        }
+
+        $data = [
+            'title' => 'Add Discount',
+            'link' => $linkTag,
+            'product' => $product,
+        ];
+
+        $this->view('Admin/discount', $data);
+    }
+
     // login admin
     public function login()
     {
