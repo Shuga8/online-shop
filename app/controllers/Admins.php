@@ -263,6 +263,25 @@ class Admins extends Controller
         $this->view("Admin/manage_products", $data);
     }
 
+    // edit product 
+    public function edit(){
+        if(!isset($_SESSION['admin'])){
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        $data = [
+            'title' => 'Edit',
+        ];
+
+        $this->view('Admin/edit', $data);
+    }
+
+    // featured produts
+    public function feature(){
+
+    }
+
     //Add new admin
     public function add()
     {
