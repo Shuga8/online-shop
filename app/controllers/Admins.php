@@ -585,10 +585,9 @@ class Admins extends Controller
 
                 $auth = $this->adminModel->auth($username, $password);
 
-                $_SESSION['admin'] = [];
 
                 if ($auth != false) {
-
+                    $_SESSION['admin'] = [];
                     array_push($_SESSION['admin'], $auth);
                     echo "continue";
                     exit();
@@ -608,6 +607,7 @@ class Admins extends Controller
         } else {
 
             unset($_SESSION['admin']);
+            $_SESSION['flash-message'] = "you have successfully signed out";
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }

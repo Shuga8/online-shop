@@ -26,7 +26,7 @@ extract($data['product']);
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="<?= SITE_URL . '/public/extras/' . $product_image ?>" alt="Image" class="img-fluid img-responsive">
+                        <img src="<?= SITE_URL . '/public/extras/' . $product_image ?>" alt="Image" class="img-fluid img-responsive" style="max-height: 200px;">
                     </div>
                     <div class="col-md-6">
                         <h2 class="text-white"><?= $product_name; ?></h2>

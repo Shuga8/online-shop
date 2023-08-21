@@ -1,4 +1,4 @@
-<?php if (count((array) $data['featured']) > 0) :  ?>
+<?php if (count((array) $data['featured']) > 0 && $data['featured'] != false) :  ?>
   <div class="site-section block-3 site-blocks-2 bg-light">
     <div class="container">
       <div class="row justify-content-center">
@@ -29,4 +29,5 @@
       </div>
     </div>
   </div>
+<?php else : ?>
 <?php endif; ?>
