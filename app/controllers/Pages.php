@@ -19,13 +19,17 @@ class Pages extends Controller
     public function index()
     {
 
+        $featured = $this->adminModel->getFeaturedProducts();
+
+
         $data = [
             'title' => 'Home Page',
             'home-class' => 'active',
             'about-class' => '',
             'shop-class' => '',
             'cont-class' => '',
-            'login-class' => ''
+            'login-class' => '',
+            'featured' => $featured
         ];
 
         $this->view('Pages/index', $data);
@@ -201,6 +205,8 @@ class Pages extends Controller
 
         $product = $this->adminModel->get_product_by_pid($id);
 
+        $featured = $this->adminModel->getFeaturedProducts();
+
         $message = "";
 
         if($product == false){
@@ -222,7 +228,8 @@ class Pages extends Controller
             'cont-class' => '',
             'login-class' => '',
             'message' => $message,
-            'product' => $product
+            'product' => $product,
+            'featured' => $featured,
         ];
 
         $this->view('Pages/shop-single', $data);

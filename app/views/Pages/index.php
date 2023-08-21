@@ -128,6 +128,26 @@ include_once APPROOT . "/views/includes/featured-product.php";
 
 
 
+<script>
+  let balances = document.querySelectorAll(".amount");
+
+  balances.forEach(Oldbalance => {
+    let balance = Oldbalance.textContent;
+
+    balance = parseInt(balance);
+
+    balance =
+      balance == 0 || balance == null || typeof balance != "number" ? 0 : balance;
+
+    balance = balance.toLocaleString("en-NG", {
+      style: "currency",
+      currency: "NGN",
+    });
+
+    Oldbalance.textContent = balance;
+  });
+</script>
+
 <!--  content ends here -->
 
 

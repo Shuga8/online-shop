@@ -271,6 +271,8 @@ class Admins extends Controller
             exit();
         }
 
+        $linkTag = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
+
         $id = "";
         if (isset($_GET['id'])) {
             $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -291,6 +293,7 @@ class Admins extends Controller
         $data = [
             'title' => ucwords(strtolower($product['product_name'])),
             'product' => $product,
+            'link' => $linkTag
         ];
 
         $this->view('Admin/product', $data);
@@ -360,6 +363,8 @@ class Admins extends Controller
             exit();
         }
 
+        $linkTag = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">';
+
         $id = "";
         if (isset($_GET['id'])) {
             $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -381,7 +386,8 @@ class Admins extends Controller
 
         $data = [
             'title' => 'Edit',
-            'product' => $product
+            'product' => $product,
+            'link' => $linkTag
         ];
 
         $this->view('Admin/edit', $data);

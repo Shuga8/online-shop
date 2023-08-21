@@ -393,4 +393,21 @@ class Admin
             return false;
         }
     }
+
+    public function getFeaturedProducts(){
+        $this->db->query("SELECT * FROM `products` WHERE `is_featured` = :para ORDER BY id DESC");
+
+        $this->db->bind(":para", "Yes");
+
+        $this->db->execute();
+
+        if($this->db->rowCount() > 0){
+
+            $row = $this->db->resultSet();
+            
+            return $row;
+        }else{
+            return false;
+        }
+    }
 }
