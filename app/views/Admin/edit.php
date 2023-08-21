@@ -17,9 +17,9 @@ extract($data['product']);
 ?>
 
     <div class="form-container">
-        <form action="<?php echo SITE_URL; ?>/Admins/store" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo SITE_URL; ?>/admins/update" method="POST" enctype="multipart/form-data">
             <h3>
-                <caption>Edit - <?= $product_name ?> <i class="text-sm fa-solid fa-pen"></i></caption>
+                <caption>Edit - "<?= strtolower($product_name) ?>"</caption>
             </h3>
 
             <p style="text-align: center;">
@@ -65,7 +65,7 @@ extract($data['product']);
 
             <div class="input-field">
                 <label for="product_price">Product price</label>
-                <input type="text" name="product_price" id="product_price">
+                <input type="text" name="product_price" id="product_price" value="<?= $product_price; ?>">
             </div>
 
             <div class="input-field">
@@ -90,7 +90,7 @@ extract($data['product']);
 
             <div class="input-field">
                 <label for="product_quantity">Quantity Available</label>
-                <input type="number" name="product_quantity" id="product_quantity">
+                <input type="number" name="product_quantity" id="product_quantity" value="<?= $product_quantity; ?>">
             </div>
 
             <button type="submit" id="submit" name="submit">Add <i class="fas fa-plus-square"></i></button>
