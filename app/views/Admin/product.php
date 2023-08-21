@@ -38,7 +38,7 @@ extract($data['product']);
                             <?php if(strtolower($is_featured) == "no") : ?>
                             <a href="<?php echo SITE_URL . '/admins/feature_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-success text-white">Feature <i class="fa-solid fa-star"></i></a>
                             <?php else: ?>
-                                <a href="<?php echo SITE_URL . '/admins/feature_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-warning text-white">Unfeature <i class="fa-solid fa-ban"></i></a>
+                                <a href="<?php echo SITE_URL . '/admins/unfeature_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-warning text-white">Unfeature <i class="fa-solid fa-ban"></i></a>
                             <?php endif; ?>
                             <a href="<?php echo SITE_URL . '/admins/delete_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-danger text-white">Delete <i class="fa-solid fa-trash"></i></a>
                         </p>

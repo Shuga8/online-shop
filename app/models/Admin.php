@@ -367,4 +367,30 @@ class Admin
             return false;
         }
     }
+
+    public function changeFeaturedToYes($id){
+
+        $this->db->query("UPDATE `products` SET `is_featured` = 'Yes' WHERE `product_id` = :id");
+
+        $this->db->bind(":id", $id);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function changeFeaturedToNo($id){
+
+        $this->db->query("UPDATE `products` SET `is_featured` = 'No' WHERE `product_id` = :id");
+
+        $this->db->bind(":id", $id);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

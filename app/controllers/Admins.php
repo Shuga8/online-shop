@@ -296,6 +296,62 @@ class Admins extends Controller
         $this->view('Admin/product', $data);
     }
 
+    // feature products 
+    public function feature_product(){
+        
+        if (!isset($_SESSION['admin'])) {
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        $id = "";
+        if (isset($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }
+
+        $featured = $this->adminModel->changeFeaturedToYes($id);
+
+        if($featured){
+            $_SESSION['flash-message'] = "Added to featured products";
+            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            exit();
+        }else{
+            $_SESSION['flash-message'] = "Error! could not add products to featured images";
+            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            exit();
+        }
+    }
+
+    public function unfeature_product(){
+        if (!isset($_SESSION['admin'])) {
+            header("Location: " . SITE_URL . "/admins/login");
+            exit();
+        }
+
+        $id = "";
+        if (isset($_GET['id'])) {
+            $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        } else {
+            header("Location: " . SITE_URL . "/admins/manage");
+            exit();
+        }
+
+        $featured = $this->adminModel->changeFeaturedToNo($id);
+
+        if($featured){
+            $_SESSION['flash-message'] = "Removed from featured products";
+            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            exit();
+        }else{
+            $_SESSION['flash-message'] = "Error! could not remove product from featured products";
+            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            exit();
+        }
+    }
+
     // edit product 
     public function edit()
     {
@@ -465,6 +521,8 @@ class Admins extends Controller
             exit(0);
         }
     }
+
+    
 
     // featured produts
     public function feature()
