@@ -14,7 +14,7 @@ class Admins extends Controller
     public function index()
     {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
@@ -32,7 +32,7 @@ class Admins extends Controller
     // Adding new products page
     public function new()
     {
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
@@ -48,7 +48,7 @@ class Admins extends Controller
     public function store()
     {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
@@ -182,7 +182,7 @@ class Admins extends Controller
     public function manage()
     {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
@@ -264,26 +264,27 @@ class Admins extends Controller
     }
 
     // edit product 
-    public function edit(){
-        if(!isset($_SESSION['admin'])){
+    public function edit()
+    {
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
 
         $id = "";
-        if(isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $id = filter_var($_GET['id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        }else{
+        } else {
             header("Location: " . SITE_URL . "/admins/manage");
             exit();
         }
 
         $product = $this->adminModel->get_product_by_pid($id);
 
-        if($product == false){
+        if ($product == false) {
             header("Location: " . SITE_URL . "/admins/manage");
             exit();
-        }else{
+        } else {
             $product = (array) $product;
         }
 
@@ -297,18 +298,21 @@ class Admins extends Controller
         $this->view('Admin/edit', $data);
     }
 
-    public function update(){
+    public function update()
+    {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            foreach ($_POST as $key => $value) {
+                $_POST[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            };
 
             $data = [
-
                 'title' => 'Add products',
                 'p_id' =>   trim($_POST['product_id']),
                 'p_name' => trim($_POST['product_name']),
@@ -322,7 +326,7 @@ class Admins extends Controller
             foreach ($data as $key => $value) {
                 if (empty($value)) {
                     $_SESSION['error'] = "<span style='color: red;'>Error: Fields empty !!!</span>";
-                    header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                     exit(0);
                 }
             }
@@ -331,31 +335,114 @@ class Admins extends Controller
 
             if (!preg_match("/^[0-9\.]{1,}$/", $data['p_price'])) {
                 $_SESSION['error'] = "<span style='color: red;'>Error: Price can only be numbers or decimal</span>";
-                header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                 exit(0);
             }
 
             if (!preg_match("/^[0-9]{1,}$/", $data['p_quantity'])) {
                 $_SESSION['error'] = "<span style='color: red;'>Error: Quantity can only be numbers!</span>";
-                header("Location: " . SITE_URL . "/admins/edit/?id=". $data['p_id']);
+                header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
                 exit(0);
             }
-        }else{
+
+            if (!empty($_FILES['product_img']['name'])) {
+                
+                //Get all file parameters/values
+                $imgName = $_FILES['product_img']['name'];
+                $imgSize = $_FILES['product_img']['size'];
+                $imgTmpName = $_FILES['product_img']['tmp_name'];
+                $imgErr =
+                    $_FILES['product_img']['error'];
+
+                // echo $imgName . "<br>" . $imgSize . "<br>" . $imgTmpName . "<br>" . $imgErr;
+                $fileTypes = ['jpg', 'png', 'jpeg'];
+                $imgExtension = explode(".", $imgName);
+                $imgExtension = strtolower(end($imgExtension));
+
+                //Check if image has an error while been uploaded
+                if ($imgErr == true) {
+                    $_SESSION['error'] = "<span style='color: red;'>Error: Something is wrong with this file!</span>";
+                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                    exit(0);
+                } else {
+
+                    //Check if image's file extension is supported
+                    if (!in_array($imgExtension, $fileTypes)) {
+                        $_SESSION['error'] = "<span style='color: red;'>Error: Supported image types are only 'jpg', 'jpeg', and  'png'</span>";
+                        header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                        exit(0);
+                    } else {
+
+                        //check if file exceeds maximum file size limit
+                        if ($imgSize > 3000000) {  //if it exceeds 3MB
+                            $_SESSION['error'] = "<span style='color: red;'>Error: Images should not exceed 3MB!!</span>";
+                            header("Location: " . SITE_URL . "/Admins/new");
+                            exit(0);
+                        } else {
+
+                            //Rename File
+                            $newImgName = time() . $imgName;
+
+                            //upload file to Extras folder
+                            $upload = move_uploaded_file($imgTmpName, "../public/extras/" . $newImgName);
+
+                            //Check if upload is successfull
+                            if ($upload == true) {
+
+                                $data['img'] = $newImgName;
+
+                                //Call Model upload Method
+                                $uploader = $this->adminModel->update_product_with_image($data);
+
+                                if ($uploader == true) {
+                                    $_SESSION['error'] = "<span style='color: green;'>Product updated successfully &check;</span>";
+                                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                                    exit(0);
+                                } else {
+                                    $_SESSION['error'] = "<span style='color: red;'>Error: could not perform action</span>";
+                                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                                    exit(0);
+                                }
+                            } else {
+                                $_SESSION['error'] = "<span style='color: red;'>Sorry an error occured,  please try again!!</span>";
+                                header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                                exit(0);
+                            }
+                        }
+                    }
+                }
+
+
+            } else {
+
+                $update = $this->adminModel->update_product_without_image($data);
+
+                if($update){
+                    $_SESSION['error'] = "<span style='color: green;'>Update successfull</span>";
+                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                    exit(0);
+                }else{
+                    $_SESSION['error'] = "<span style='color: red;'>An error occurred please try again!.</span>";
+                    header("Location: " . SITE_URL . "/admins/edit/?id=" . $data['p_id']);
+                    exit(0);
+                }
+            }
+        } else {
             header("Location: " . SITE_URL . "/admins/login");
             exit(0);
         }
     }
 
     // featured produts
-    public function feature(){
-
+    public function feature()
+    {
     }
 
     //Add new admin
     public function add()
     {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
@@ -371,7 +458,7 @@ class Admins extends Controller
     public function login()
     {
 
-        if(isset($_SESSION['admin'])){
+        if (isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/index");
             exit();
         }
@@ -386,7 +473,7 @@ class Admins extends Controller
     public function auth()
     {
 
-        if(isset($_SESSION['admin'])){
+        if (isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/index");
             exit();
         }
@@ -418,17 +505,14 @@ class Admins extends Controller
     public function logout()
     {
 
-        if(!isset($_SESSION['admin'])){
+        if (!isset($_SESSION['admin'])) {
             header("Location: " . SITE_URL . "/admins/index");
             exit();
-        }else{
+        } else {
 
             unset($_SESSION['admin']);
             header("Location: " . SITE_URL . "/admins/login");
             exit();
         }
-
-
-
     }
 }

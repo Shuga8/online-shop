@@ -330,4 +330,41 @@ class Admin
             return false;
         }
     }
+
+    public function update_product_with_image(Array $data){
+        $this->db->query("UPDATE `products` SET `product_name` = :name, `product_caption` = :cap, `product_image` =:img, `product_price` = :price, `product_category` = :category, `product_size` = :size, `product_quantity` = :quantity WHERE `product_id` = :product_id");
+
+        $this->db->bind(":name", $data['p_name']);
+        $this->db->bind(":cap", $data['p_cap']);
+        $this->db->bind(":img", $data['p_img']);
+        $this->db->bind(":price", $data['p_price']);
+        $this->db->bind(":category", $data['p_category']);
+        $this->db->bind(":size", $data['p_size']);
+        $this->db->bind(":quantity", $data['p_quantity']);
+        $this->db->bind(":product_id", $data['p_id']);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function update_product_without_image(Array $data){
+        $this->db->query("UPDATE `products` SET `product_name` = :name, `product_caption` = :cap, `product_price` = :price, `product_category` = :category, `product_size` = :size, `product_quantity` = :quantity WHERE `product_id` = :product_id");
+
+        $this->db->bind(":name", $data['p_name']);
+        $this->db->bind(":cap", $data['p_cap']);
+        $this->db->bind(":price", $data['p_price']);
+        $this->db->bind(":category", $data['p_category']);
+        $this->db->bind(":size", $data['p_size']);
+        $this->db->bind(":quantity", $data['p_quantity']);
+        $this->db->bind(":product_id", $data['p_id']);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
