@@ -38,15 +38,17 @@ include_once APPROOT . "/views/components/flash-message.php";
     <aside class="aside" id="aside">
 
         <div class="logo">
-            <i class="fa-solid fa-cart-plus"></i>
+            <figure>
+                <img src="<?= SITE_URL; ?>/public/images/favicon.jpg" alt="Logo /" style="width: 50px;margin-top: 10px;">
+            </figure>
         </div>
 
         <div class="links">
-            <a href="<?php echo SITE_URL; ?>/admins/index"><i class="fa-solid fa-gauge"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span></a>
-            <a href="<?php echo SITE_URL; ?>/admins/manage"><i class="fa-solid fa-boxes-stacked"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Manage products</span></a>
-            <a href="<?php echo SITE_URL; ?>/admins/new"><i class="fa-solid fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Product</span></a>
-            <a href="<?php echo SITE_URL; ?>/admins/add"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Add Admin</span></a>
-            <a href="<?php echo SITE_URL; ?>/admins/logout"><i class="fa-solid fa-power-off"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Sign out</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/index"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/manage"><i class="fa-solid fa-boxes-stacked"></i><span>Manage products</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/new"><i class="fa-solid fa-circle-plus"></i><span>Product</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/add"><i class="fa-solid fa-user-plus"></i><span>Add Admin</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/logout"><i class="fa-solid fa-power-off"></i><span>Sign out</span></a>
         </div>
 
     </aside>

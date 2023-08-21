@@ -40,6 +40,7 @@ body {
         body .aside .links a i {
           font-size: 20px; }
         body .aside .links a span {
+          margin-left: 10px;
           color: #ccc;
           font-size: 14px;
           font-weight: 600; }
