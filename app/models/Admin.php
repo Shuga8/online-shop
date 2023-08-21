@@ -410,4 +410,18 @@ class Admin
             return false;
         }
     }
+
+    public function checkIfFeaturedProductsIsUpToThree(){
+        $this->db->query("SELECT *FROM `products` WHERE `is_featured` = :para");
+
+        $this->db->bind(":para", "Yes");
+
+        $this->db->execute();
+
+        if($this->db->rowCount() >= 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

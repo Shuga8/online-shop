@@ -33,6 +33,9 @@ extract($data['product']);
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p> -->
                         <p class="mb-4 text-white"><?= $product_caption; ?></p>
                         <p><strong class="text-primary h4 amount"><?= $product_price; ?></strong></p>
+                        <p class="text-white"><span class="text-warning">Category: </span><?= ucwords($product_category); ?></p>
+                        <p class="text-white"><span class="text-warning">Price: </span><?= ucwords($product_size); ?></p>
+                        <p class="text-white"><span class="text-warning">Discount: </span><?= ucwords($product_discount); ?>%</p>
                         <p>
                             <a href="<?php echo SITE_URL . '/admins/edit/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-primary">Edit <i class="fa-solid fa-file-pen"></i></a>
 
@@ -41,6 +44,7 @@ extract($data['product']);
                             <?php else: ?>
                                 <a href="<?php echo SITE_URL . '/admins/unfeature_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-warning text-white">Unfeature <i class="fa-solid fa-ban"></i></a>
                             <?php endif; ?>
+                            <a href="<?php echo SITE_URL . '/admins/product_discount/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-info text-white">Discount <i class="fa-solid fa-tag"></i></a>
                             <a href="<?php echo SITE_URL . '/admins/delete_product/?id=' . $product_id; ?>" class="buy-now btn btn-sm btn-danger text-white">Delete <i class="fa-solid fa-trash"></i></a>
                         </p>
 

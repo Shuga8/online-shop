@@ -315,6 +315,14 @@ class Admins extends Controller
             exit();
         }
 
+        $count = $this->adminModel->checkIfFeaturedProductsIsUpToThree();
+
+        if($count){
+            $_SESSION['flash-message'] = "Cannot have more than 3 featured products!";
+            header("Location: " . SITE_URL . "/admins/product/?id=".$id);
+            exit();
+        }
+
         $featured = $this->adminModel->changeFeaturedToYes($id);
 
         if($featured){
@@ -327,6 +335,7 @@ class Admins extends Controller
             exit();
         }
     }
+
 
     public function unfeature_product(){
         if (!isset($_SESSION['admin'])) {
