@@ -52,6 +52,8 @@ include_once APPROOT . "/views/includes/header.php";
           </div>
 
         </div> -->
+        <p class="mb-4"><span class="text-danger">Category: </span><?= ucwords($data['product']->product_category); ?></p>
+        <p class="mb-4"><span class="text-danger">Size: </span><?= ucwords($data['product']->product_size); ?></p>
         <p><a href="<?php echo SITE_URL . '/pages/add_to_cart/' . $data['product']->id . '/' . $data['product']->product_id; ?>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
       </div>
