@@ -47,7 +47,7 @@ include_once APPROOT . "/views/components/flash-message.php";
             <a href="<?php echo SITE_URL; ?>/admins/index"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></a>
             <a href="<?php echo SITE_URL; ?>/admins/manage"><i class="fa-solid fa-boxes-stacked"></i><span>Manage products</span></a>
             <a href="<?php echo SITE_URL; ?>/admins/new"><i class="fa-solid fa-circle-plus"></i><span>Product</span></a>
-            <a href="<?php echo SITE_URL; ?>/admins/add"><i class="fa-solid fa-user-plus"></i><span>Add Admin</span></a>
+            <a href="<?php echo SITE_URL; ?>/admins/featured"><i class="fa-solid fa-star"></i><span>Featured products</span></a>
             <a href="<?php echo SITE_URL; ?>/admins/logout"><i class="fa-solid fa-power-off"></i><span>Sign out</span></a>
         </div>
 
