@@ -39,7 +39,7 @@ include_once APPROOT . "/views/includes/header.php";
         background: #5199ffa9;
         border-radius: 3px;
         text-align: center;
-        box-shadow: -2px 2px 4px #aaa, 2px -2px 2px #aaa;
+        box-shadow: -2px 2px 4px #aaa, 2px -2px 4px #bbb;
     }
 
     .auth-container pre {
