@@ -27,12 +27,19 @@ include_once APPROOT . "/views/includes/header.php";
         align-items: center;
         box-shadow: 2px 2px 7px #ccc, -2px -2px 7px #ccc;
         border-radius: 5px;
+        padding: 5px;
     }
 
     .auth-container a {
-        color: #5199ffa9;
+        color: #fff;
         font-size: 1.3rem;
         font-weight: 700;
+        width: 80%;
+        padding: 3px 30px;
+        background: #5199ffa9;
+        border-radius: 3px;
+        text-align: center;
+        box-shadow: -2px 2px 4px #aaa, 2px -2px 2px #aaa;
     }
 
     .auth-container pre {
