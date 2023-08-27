@@ -53,7 +53,11 @@
                         <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                             <div class="site-top-icons">
                                 <ul>
-                                    <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                    <?php if (isset($_SESSION['g_uid'])) : ?>
+                                        <li><a href=""><img src="<?= $_SESSION['g_img']?>" alt="" class="img-fluid img-responsive" style="width: 30px;border-radius: 50%; margin-top: -12px"></a></li>
+                                    <?php else : ?>
+                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                    <?php endif; ?>
                                     <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                     <li>
                                         <a href="<?php echo SITE_URL;  ?>/cart" class="site-cart">
