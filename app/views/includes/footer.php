@@ -34,7 +34,7 @@
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 mr-lg-5">
                 <h3 class="footer-heading mb-4">Promo</h3>
                 <a href="#" class="block-6">
-                    <img src="<?php echo SITE_URL; ?>/public/images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
+                    <img src="<?php echo SITE_URL; ?>/public/images/saint.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
                     <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
                     <p>Promo from August 15 &mdash; 25, 2023</p>
                 </a>
