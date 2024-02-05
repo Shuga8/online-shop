@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title><?php echo SITE_NAME; ?></title>
+    <title>Hero Collections</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Cache-Control" content="no-store" />
@@ -46,7 +46,7 @@
 
                         <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center" style="border: none">
                             <div class="site-logo">
-                                <a href="<?php echo SITE_URL;  ?>/index" class="js-logo-clone"><img src="<?= SITE_URL; ?>/public/images/logo.jpg" alt="" style="width: 180px;height: 70px;object-fit:cover;"></a>
+                                <a href="<?php echo SITE_URL;  ?>/index" class="js-logo-clone"><img src="<?= SITE_URL; ?>/public/images/logo1.jpg" alt="" style="width: 180px;height: 70px;object-fit:cover;"></a>
                             </div>
                         </div>
 

@@ -6,6 +6,10 @@ body {
   font-size: 16px;
 }
 
+.span{
+  color:#28A745;
+}
+
 ::-moz-selection {
   background: #000;
   color: #fff;
@@ -143,7 +147,7 @@ a:hover {
   position: absolute;
   width: 40px;
   height: 2px;
-  background: #7971ea;
+  background: blue;
 }
 
 .border-top {

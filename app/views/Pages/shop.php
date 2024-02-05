@@ -262,10 +262,20 @@ include_once APPROOT . "/views/includes/header.php";
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/men" class="d-flex"><span>Men</span> <span class="text-black ml-auto men-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/women" class="d-flex"><span>Women</span> <span class="text-black ml-auto women-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex" class="d-flex"><span>Unisex</span> <span class="text-black ml-auto unisex-span-count">(...)</span></a></li>
-            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/children" class="d-flex"><span>Children</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/jacket" class="d-flex"><span>Jacket</span> <span class="text-black ml-auto men-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/round-neck" class="d-flex"><span>Round neck</span> <span class="text-black ml-auto women-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/long-sleeves" class="d-flex"><span>Long sleeves </span> <span class="text-black ml-auto unisex-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/children" class="d-flex"><span>Polos long and shrot</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/socks" class="d-flex"><span>Socks </span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/jean-short" class="d-flex"><span>Jean short</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+            <li class="mb-1"><a href="<?php echo SITE_URL; ?>/pages/shop/category/lumba-short" class="d-flex"><span>Lumba short</span> <span class="text-black ml-auto children-span-count">(...)</span></a></li>
+             
+ 
+
+
+
+ 
+
           </ul>
         </div>
 

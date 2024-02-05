@@ -21,12 +21,21 @@
                             <li><a href="#">Website development</a></li>
                         </ul>
                     </div> -->
-                    <div class="col-md-6 col-lg-2">
+                    <div class="col-md-6 col-lg-0">
                         <ul class="list-unstyled">
-                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/men">Men</a></li>
-                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/women">Women</a></li>
-                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/children">Children</a></li>
-                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">unisex</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/men">Jacket </a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/men">Round neck </a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/women">Long sleeves </a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/children">Polos long and shrot</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">Socks </a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">Jean short </a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/pages/shop/category/unisex">Lumba short</a></li> 
+
+
+
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -44,7 +53,7 @@
                     <h3 class="footer-heading mb-4">Contact Info</h3>
                     <ul class="list-unstyled">
                         <li class="address"> <address>Suite 20 Petrus place beside Assemblies of God church 30 nanka street new heaven Enugu</address></li>
-                        <li class="phone"><a href="tel://2349022862346">+234 090 2286 2346 </a></li>
+                        <li class="phone "><a href="tel://2349022862346">+234 090 2286 2346 </a></li>
                         <li class="email">emailaddress@saint.com</li>
                     </ul>
                 </div>
@@ -54,7 +63,7 @@
                         <label for="email_subscribe" class="footer-heading">Subscribe</label>
                         <div class="form-group">
                             <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                            <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                            <input type="submit" class="btn btn-sm btn-success" value="Send">
                         </div>
                     </form>
                 </div>
