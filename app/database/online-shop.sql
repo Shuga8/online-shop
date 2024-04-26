@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 02:39 AM
+-- Generation Time: Aug 29, 2023 at 06:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -64,6 +64,14 @@ CREATE TABLE `cart` (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `product_id`, `product_image`, `product_name`, `product_price`, `product_quantity`, `product_size`, `product_total`, `created_at`, `updated_at`) VALUES
+(1, '109033917743877585563', '169261274464e33888a8890', '1692619677saint.jpg', 'SIL X Louis Vuitton', 60000.00, 1, 'large', 60000, '2023-08-23 16:21:40', '2023-08-23 16:21:40'),
+(2, '109033917743877585563', '169256145264e2702c71766', '1692561452b6f8258008e5fad45a6e70918d66b66e.jpg', 'Hot Gray T-Shirt', 5000.00, 1, 'large', 5000, '2023-08-23 16:22:24', '2023-08-23 16:22:24');
+
 -- --------------------------------------------------------
 
 --
@@ -121,7 +129,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `firstname`, `lastname`, `email`, `user_image`, `created_at`, `updated_at`) VALUES
 (1, '100506710207144320804', 'Patrick', 'Beahm', 'beahmpatrick@gmail.com', 'https://lh3.googleusercontent.com/a/AAcHTtfaTWZaFMHt6rWnWQ9vCc5RFOTYF5K6BL1kZNHplUg_=s96-c', '2023-08-11 19:09:33', '2023-08-11 19:09:33'),
-(2, '109033917743877585563', 'charles', 'loto', 'charlesloto98@gmail.com', 'https://lh3.googleusercontent.com/a/AAcHTtci9VAJ2GMOIvNHJK5sThZMS1Moa9PUDLQozduahgo5=s96-c', '2023-08-12 21:55:37', '2023-08-12 21:55:37');
+(2, '109033917743877585563', 'charles', 'loto', 'charlesloto98@gmail.com', 'https://lh3.googleusercontent.com/a/AAcHTtci9VAJ2GMOIvNHJK5sThZMS1Moa9PUDLQozduahgo5=s96-c', '2023-08-12 21:55:37', '2023-08-12 21:55:37'),
+(3, '105628340283510011770', 'charles', 'loto', 'lotocharles8@gmail.com', 'https://lh3.googleusercontent.com/a/AAcHTtf6v7JfCp4pFukSrqBv9503s4jaP-M4LFDsqyQhWTiH=s96-c', '2023-08-27 23:40:29', '2023-08-27 23:40:29');
 
 --
 -- Indexes for dumped tables
@@ -166,7 +175,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -178,7 +187,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

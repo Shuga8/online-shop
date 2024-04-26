@@ -60,6 +60,11 @@ class Users extends Controller
                     // Get User Data
                     $udata = $gservice->userinfo->get();
 
+                    // echo "<pre>";
+                    // print_r($udata);
+                    // echo "</pre>";
+                    // exit(0);
+
                     $_SESSION['user_arr'] = [];
 
                     foreach ($udata as $k => $v) {
